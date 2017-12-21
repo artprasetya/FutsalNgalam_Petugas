@@ -5,4 +5,8 @@
     <color name="colorAccent">#ffff</color>
     <color name="colorWhite">#ffff</color>
     <color name="colorBlack">#000</color>
+
+    <color name="ratingBarActived">#ffbf41</color>
+    <color name="ratingBarNotActived">#ffde9d</color>
+
 </resources>

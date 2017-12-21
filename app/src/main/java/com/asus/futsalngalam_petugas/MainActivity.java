@@ -23,9 +23,9 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        HomeFragment fragment = new HomeFragment();
+        HomeFragment Fragment = new HomeFragment();
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-        fragmentTransaction.replace(R.id.frameLayout, fragment);
+        fragmentTransaction.replace(R.id.frameLayout, Fragment);
         fragmentTransaction.commit();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -55,9 +55,9 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.beranda) {
-            HomeFragment fragment = new HomeFragment();
+            HomeFragment Fragment = new HomeFragment();
             FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
-            fragmentTransaction.replace(R.id.frameLayout, fragment);
+            fragmentTransaction.replace(R.id.frameLayout, Fragment);
             fragmentTransaction.commit();
         } else if (id == R.id.pemesanan) {
             PemesananFragment Fragment = new PemesananFragment();
