@@ -1,49 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/colorPrimary">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
-        android:paddingTop="24dp"
         android:paddingLeft="24dp"
-        android:paddingRight="24dp">
+        android:paddingRight="24dp"
+        android:paddingTop="24dp">
 
-        <ImageView android:src="@drawable/logo"
+        <ImageView
             android:layout_width="wrap_content"
-            android:layout_height="100dp"
-            android:layout_marginBottom="24dp"
-            android:layout_gravity="center_horizontal" />
-
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Login Petugas"
-            android:gravity="center"
-            android:textSize="20dp"
-            android:textColor="@color/colorWhite"
-            android:paddingBottom="20dp"/>
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:src="@drawable/fn_logo"
+            android:layout_marginTop="20dp" android:contentDescription="TODO"/>
 
         <EditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email Address"
+            android:backgroundTint="@color/colorWhite"
+            android:hint="Email"
             android:inputType="textEmailAddress"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
 
         <EditText
             android:id="@+id/etPassword"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:backgroundTint="@color/colorWhite"
             android:hint="Password"
             android:inputType="textPassword"
-            android:textColor="@color/colorWhite"/>
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
 
         <Button
             android:id="@+id/btn_login"
@@ -52,6 +48,27 @@
             android:layout_marginTop="20dp"
             android:background="@color/colorWhite"
             android:text="Login"
-            android:textColor="@color/colorPrimary"/>
+            android:textColor="@color/colorPrimary" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:indeterminate="true"
+            android:visibility="invisible"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!--<ProgressBar-->
+            <!--android:id="@+id/progressBar"-->
+            <!--style="@style/Widget.AppCompat.ProgressBar.Horizontal"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:indeterminate="true"-->
+            <!--tools:visibility="invisible" />-->
+
     </LinearLayout>
+
 </RelativeLayout>

@@ -1,26 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.asus.futsalngalam_petugas">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
-        android:icon="@mipmap/logo"
+        android:icon="@mipmap/fn_icon"
         android:label="Futsal Ngalam"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme">
-        <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN"/>
+        android:theme="@style/AppTheme"
+        tools:replace="android:label,android:icon">
 
-                <category android:name="android.intent.category.LAUNCHER"/>
+        <activity android:name=".SplashActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:label="Futsal Ngalam Petugas"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
+        <activity android:name=".Autentikasi.LoginActivity"/>
+        <activity android:name=".MenuProfil.ProfilActivity" />
+        <activity android:name=".MenuProfil.UbahProfilActivity" />
+        <activity android:name=".MenuPembayaran.PembayaranActivity" />
+        <activity android:name=".MenuUlasan.UlasanActivity" />
+        <activity android:name=".MenuBeranda.MainActivity" />
+        <activity android:name=".MenuPesanan.PesananActivity" />
+        <activity android:name=".MenuProfil.AlbumFotoActivity" />
+        <activity android:name=".MenuProfil.LihatFotoActivity"/>
     </application>
 
 </manifest>
