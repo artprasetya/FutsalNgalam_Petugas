@@ -7,17 +7,21 @@ package com.asus.futsalngalam_petugas.MenuProfil.Model;
 public class TempatFutsal {
 
     private String idPetugas, namaTempatFutsal, alamat, deskripsi, noTelepon, fotoProfil;
+    public double latitude;
+    public double longitude;
 
     public TempatFutsal() {
     }
 
-    public TempatFutsal(String idPetugas, String namaTempatFutsal, String alamat, String deskripsi, String noTelepon, String fotoProfil) {
+    public TempatFutsal(String idPetugas, String namaTempatFutsal, String alamat, String deskripsi, String noTelepon, String fotoProfil, double latitude, double longitude) {
         this.idPetugas = idPetugas;
         this.namaTempatFutsal = namaTempatFutsal;
         this.alamat = alamat;
         this.deskripsi = deskripsi;
         this.noTelepon = noTelepon;
         this.fotoProfil = fotoProfil;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public String getIdPetugas() {
@@ -66,5 +70,21 @@ public class TempatFutsal {
 
     public void setFotoProfil(String fotoProfil) {
         this.fotoProfil = fotoProfil;
+    }
+
+    public double getLatitude() {
+        return latitude;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public double getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
     }
 }

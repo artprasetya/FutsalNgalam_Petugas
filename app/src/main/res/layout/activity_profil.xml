@@ -14,7 +14,17 @@
         android:minHeight="56dp"
         app:subtitleTextColor="@color/colorWhite"
         app:theme="@style/ToolbarStyle"
-        app:titleTextColor="@color/colorWhite" />
+        app:titleTextColor="@color/colorWhite">
+
+        <ImageView
+            android:id="@+id/maps"
+            android:layout_width="wrap_content"
+            android:layout_marginRight="20dp"
+            android:layout_height="30dp"
+            android:layout_gravity="right"
+            android:adjustViewBounds="true"
+            android:src="@drawable/maps" />
+    </android.support.v7.widget.Toolbar>
 
     <android.support.v4.widget.NestedScrollView
         android:id="@+id/scrollView"

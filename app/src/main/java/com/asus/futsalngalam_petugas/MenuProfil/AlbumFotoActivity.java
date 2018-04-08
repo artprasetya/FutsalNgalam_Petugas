@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.webkit.MimeTypeMap;
 import android.widget.Button;
@@ -36,9 +37,6 @@ public class AlbumFotoActivity extends AppCompatActivity {
     //object idPetugas
     String idPetugas;
 
-//    // Folder path for Firebase Storage.
-//    String Storage_Path;
-
     // Root Database Name for Firebase Database.
     String Database_Path = "tempatFutsal";
 
@@ -63,10 +61,19 @@ public class AlbumFotoActivity extends AppCompatActivity {
 
     ProgressDialog progressDialog;
 
+    private Toolbar toolbar;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_foto);
+
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        toolbar.setTitle("Tambahkan Foto");
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -129,6 +136,12 @@ public class AlbumFotoActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 
     @Override

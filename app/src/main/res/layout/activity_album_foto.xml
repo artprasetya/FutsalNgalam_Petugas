@@ -1,59 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
     tools:context="com.asus.futsalngalam_petugas.MenuProfil.AlbumFotoActivity">
 
-    <TextView
-        android:id="@+id/textview"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:gravity="center"
-        android:text="Menambahkan Foto Ke Album"
-        android:textSize="20dp"
-        android:textStyle="bold" />
+    <LinearLayout
+        android:id="@+id/layout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-    <ImageView
-        android:id="@+id/ShowImageView"
-        android:layout_width="fill_parent"
-        android:layout_height="200dp"
-        android:layout_below="@+id/textview"
-        android:layout_marginTop="20dp" />
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            android:minHeight="56dp"
+            app:subtitleTextColor="@color/colorWhite"
+            app:theme="@style/ToolbarStyle"
+            app:titleTextColor="@color/colorWhite" />
 
-    <EditText
-        android:id="@+id/ImageNameEditText"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ShowImageView"
-        android:layout_marginTop="10dp"
-        android:gravity="center"
-        android:hint="Tambahkan Keterangan Foto" />
+    </LinearLayout>
 
-    <Button
-        android:id="@+id/ButtonChooseImage"
-        android:layout_width="fill_parent"
+    <LinearLayout
+        android:id="@+id/layout2"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ImageNameEditText"
-        android:text="Pilih Gambar" />
+        android:layout_below="@+id/layout1"
+        android:layout_margin="20dp"
+        android:orientation="vertical">
 
-    <Button
-        android:id="@+id/ButtonUploadImage"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ButtonChooseImage"
-        android:background="@color/colorPrimary"
-        android:text="Simpan Gambar"
-        android:textColor="@color/colorWhite" />
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="Menambahkan Foto Ke Album"
+            android:textSize="20dp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/DisplayImagesButton"
-        android:layout_width="fill_parent"
+        <ImageView
+            android:id="@+id/ShowImageView"
+            android:layout_width="fill_parent"
+            android:layout_height="200dp"
+            android:layout_below="@+id/textview"
+            android:layout_marginTop="20dp" />
+
+        <EditText
+            android:id="@+id/ImageNameEditText"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ShowImageView"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:hint="Tambahkan Keterangan Foto" />
+
+        <Button
+            android:id="@+id/ButtonChooseImage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ImageNameEditText"
+            android:text="Pilih Gambar" />
+
+        <Button
+            android:id="@+id/ButtonUploadImage"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/ButtonChooseImage"
+            android:background="@color/colorPrimary"
+            android:text="Simpan Gambar"
+            android:textColor="@color/colorWhite" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/layout3"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/ButtonUploadImage"
-        android:layout_marginTop="10dp"
-        android:text="Lihat semua foto" />
+        android:layout_alignParentBottom="true"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <Button
+            android:id="@+id/DisplayImagesButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:background="@color/colorOrange"
+            android:text="Lihat semua foto"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 </RelativeLayout>

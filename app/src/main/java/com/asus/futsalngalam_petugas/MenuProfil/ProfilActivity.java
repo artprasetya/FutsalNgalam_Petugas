@@ -9,6 +9,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.asus.futsalngalam_petugas.MapsActivity;
 import com.asus.futsalngalam_petugas.MenuProfil.Model.TempatFutsal;
 import com.asus.futsalngalam_petugas.R;
 import com.bumptech.glide.Glide;
@@ -28,7 +29,7 @@ public class ProfilActivity extends AppCompatActivity {
 
     private DatabaseReference dbRef;
 
-    private ImageView imageView;
+    private ImageView imageView, mapView;
     private TextView tvKontak, tvDeskripsi, tvHarga;
     private FirebaseAuth auth;
 
@@ -52,6 +53,7 @@ public class ProfilActivity extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
 
         imageView = (ImageView) findViewById(R.id.imageView);
+        mapView = (ImageView) findViewById(R.id.maps);
         tvHarga = (TextView) findViewById(R.id.tvHarga);
         tvKontak = (TextView) findViewById(R.id.tvKontak);
         tvDeskripsi = (TextView) findViewById(R.id.tvDeskripsi);
@@ -71,6 +73,13 @@ public class ProfilActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(ProfilActivity.this, AlbumFotoActivity.class));
+            }
+        });
+
+        mapView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                startActivity(new Intent(ProfilActivity.this, MapsActivity.class));
             }
         });
 
