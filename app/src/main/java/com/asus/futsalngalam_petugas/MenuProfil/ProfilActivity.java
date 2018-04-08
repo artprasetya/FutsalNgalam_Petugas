@@ -1,6 +1,7 @@
 package com.asus.futsalngalam_petugas.MenuProfil;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
@@ -21,16 +22,13 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
-public class ProfilActivity extends AppCompatActivity {
+public class ProfilActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Button btnUbah, btn_foto;
-
     private Toolbar toolbar;
-
     private DatabaseReference dbRef;
-
-    private ImageView imageView, mapView;
-    private TextView tvKontak, tvDeskripsi, tvHarga;
+    private ImageView imageView, whatsapp, mapView;
+    private TextView tvKontak, tvDeskripsi;
     private FirebaseAuth auth;
 
     private String idPetugas, namaTempatFutsal, alamat;
@@ -54,35 +52,38 @@ public class ProfilActivity extends AppCompatActivity {
 
         imageView = (ImageView) findViewById(R.id.imageView);
         mapView = (ImageView) findViewById(R.id.maps);
-        tvHarga = (TextView) findViewById(R.id.tvHarga);
+        whatsapp = (ImageView) findViewById(R.id.whatsapp);
         tvKontak = (TextView) findViewById(R.id.tvKontak);
         tvDeskripsi = (TextView) findViewById(R.id.tvDeskripsi);
         btn_foto = (Button) findViewById(R.id.btn_foto);
         btnUbah = (Button) findViewById(R.id.btn_ubah);
 
+        mapView.setOnClickListener(this);
+        btn_foto.setOnClickListener(this);
+        tvKontak.setOnClickListener(this);
+        btnUbah.setOnClickListener(this);
+        whatsapp.setOnClickListener(this);
+
+        setToolbar();
         getDataFutsal();
+    }
 
-        btnUbah.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfilActivity.this, UbahProfilActivity.class));
-            }
-        });
+    @Override
+    public void onClick(View view) {
+        if (view == tvKontak) {
+            goToDial();
+        } else if (view == btn_foto) {
+            startActivity(new Intent(ProfilActivity.this, AlbumFotoActivity.class));
+        } else if (view == btnUbah) {
+            startActivity(new Intent(ProfilActivity.this, UbahProfilActivity.class));
+        } else if (view == mapView) {
+            startActivity(new Intent(ProfilActivity.this, MapsActivity.class));
+        } else if (view == whatsapp) {
+            goToWhatsApp();
+        }
+    }
 
-        btn_foto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfilActivity.this, AlbumFotoActivity.class));
-            }
-        });
-
-        mapView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(ProfilActivity.this, MapsActivity.class));
-            }
-        });
-
+    private void setToolbar() {
         dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -114,6 +115,39 @@ public class ProfilActivity extends AppCompatActivity {
                     tvKontak.setText(tempatFutsal.getNoTelepon());
                     tvDeskripsi.setText(tempatFutsal.getDeskripsi());
                 }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+    private void goToWhatsApp() {
+        dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String notelp = (String) dataSnapshot.child("noTelepon").getValue();
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone="+notelp));
+                startActivity(intent);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    public void goToDial() {
+        dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                String notelp = (String) dataSnapshot.child("noTelepon").getValue();
+                String dial = "tel:" + notelp;
+                startActivity(new Intent(Intent.ACTION_DIAL, Uri.parse(dial)));
             }
 
             @Override

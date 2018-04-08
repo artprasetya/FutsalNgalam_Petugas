@@ -89,12 +89,26 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         btn_simpan_foto = (Button) findViewById(R.id.simpan_foto);
         btn_simpan = (Button) findViewById(R.id.btn_simpan);
 
+        setToolbar();
         getDataFutsal();
 
         btn_ubah_foto.setOnClickListener(this);
         btn_simpan_foto.setOnClickListener(this);
         btn_simpan.setOnClickListener(this);
+    }
 
+    @Override
+    public void onClick(View view) {
+        if (view == btn_ubah_foto) {
+            showFileChooser();
+        } else if (view == btn_simpan_foto) {
+            simpanFoto();
+        } else if (view == btn_simpan) {
+            simpanData();
+        }
+    }
+
+    private void setToolbar() {
         dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -108,17 +122,6 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
             public void onCancelled(DatabaseError databaseError) {
             }
         });
-    }
-
-    @Override
-    public void onClick(View view) {
-        if (view == btn_ubah_foto) {
-            showFileChooser();
-        } else if (view == btn_simpan_foto) {
-            simpanFoto();
-        } else if (view == btn_simpan) {
-            simpanData();
-        }
     }
 
     private void simpanFoto() {
@@ -168,24 +171,17 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void simpanData() {
-
         mProgress.setMessage("Menyimpan Data");
-
         final String kontak = etKontak.getText().toString().trim();
         final String deskripsi = etDeskripsi.getText().toString().trim();
         final String alamat = etAlamat.getText().toString().trim();
 
-
         if (!TextUtils.isEmpty(kontak) && !TextUtils.isEmpty(deskripsi) && !TextUtils.isEmpty(alamat)) {
-
             mProgress.show();
-
             dbRef.child("tempatFutsal").child(idPetugas).child("deskripsi").setValue(deskripsi);
             dbRef.child("tempatFutsal").child(idPetugas).child("alamat").setValue(alamat);
             dbRef.child("tempatFutsal").child(idPetugas).child("noTelepon").setValue(kontak);
-
             mProgress.dismiss();
-
             startActivity(new Intent(UbahProfilActivity.this, ProfilActivity.class));
         }
     }
