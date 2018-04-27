@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.Autentikasi;
+package com.asus.futsalngalam_petugas.MenuAutentikasi;
 
 import android.app.Activity;
 import android.content.Intent;

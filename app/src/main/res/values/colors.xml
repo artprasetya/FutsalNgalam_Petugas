@@ -7,6 +7,7 @@
     <color name="colorBlack">#000</color>
     <color name="colorRed">#e20101</color>
     <color name="colorOrange">#f96d00</color>
+    <color name="colorGrey">#6e828a</color>
     <color name="ratingBarActived">#ffbf41</color>
     <color name="ratingBarNotActived">#ffde9d</color>
 </resources>

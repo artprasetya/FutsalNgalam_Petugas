@@ -31,7 +31,9 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
     private TextView tvKontak, tvDeskripsi;
     private FirebaseAuth auth;
 
-    private String idPetugas, namaTempatFutsal, alamat;
+    private String idPetugas,
+            namaTempatFutsal,
+            alamat;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,7 +131,7 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 String notelp = (String) dataSnapshot.child("noTelepon").getValue();
-                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone="+notelp));
+                Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://api.whatsapp.com/send?phone=" + notelp));
                 startActivity(intent);
             }
 

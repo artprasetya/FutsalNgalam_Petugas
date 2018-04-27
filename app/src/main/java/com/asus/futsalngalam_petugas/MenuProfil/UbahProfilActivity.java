@@ -43,9 +43,14 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     private static final int PICK_IMAGE_REQUEST = 234;
 
     //object
-    private EditText etKontak, etDeskripsi, etAlamat, etHarga;
-    private Button btn_simpan, btn_simpan_foto;
-    private Button btn_ubah_foto;
+    private EditText etKontak,
+            etDeskripsi;
+
+    private Button btn_simpan,
+            btn_simpan_foto,
+            btn_ubah_foto,
+            gotoFasilitas;
+
     private ImageView imageView;
 
     //uri store file
@@ -84,10 +89,10 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         imageView = (ImageView) findViewById(R.id.imageView);
         etKontak = (EditText) findViewById(R.id.etKontak);
         etDeskripsi = (EditText) findViewById(R.id.etDeskripsi);
-        etAlamat = (EditText) findViewById(R.id.etAlamat);
         btn_ubah_foto = (Button) findViewById(R.id.ubah_foto);
         btn_simpan_foto = (Button) findViewById(R.id.simpan_foto);
         btn_simpan = (Button) findViewById(R.id.btn_simpan);
+        gotoFasilitas = (Button) findViewById(R.id.fasilitas);
 
         setToolbar();
         getDataFutsal();
@@ -105,6 +110,8 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
             simpanFoto();
         } else if (view == btn_simpan) {
             simpanData();
+        } else if (view == gotoFasilitas) {
+            startActivity(new Intent(UbahProfilActivity.this, FasilitasActivity.class));
         }
     }
 
@@ -172,15 +179,15 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
 
     private void simpanData() {
         mProgress.setMessage("Menyimpan Data");
+
         final String kontak = etKontak.getText().toString().trim();
         final String deskripsi = etDeskripsi.getText().toString().trim();
-        final String alamat = etAlamat.getText().toString().trim();
-
         if (!TextUtils.isEmpty(kontak) && !TextUtils.isEmpty(deskripsi) && !TextUtils.isEmpty(alamat)) {
+//            String key = dbRef.push().getKey();
             mProgress.show();
             dbRef.child("tempatFutsal").child(idPetugas).child("deskripsi").setValue(deskripsi);
-            dbRef.child("tempatFutsal").child(idPetugas).child("alamat").setValue(alamat);
             dbRef.child("tempatFutsal").child(idPetugas).child("noTelepon").setValue(kontak);
+//            dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(key).setValue(fasilitas);
             mProgress.dismiss();
             startActivity(new Intent(UbahProfilActivity.this, ProfilActivity.class));
         }
@@ -193,7 +200,6 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
                 TempatFutsal tempatFutsal = dataSnapshot.getValue(TempatFutsal.class);
                 if (tempatFutsal != null) {
                     Glide.with(getApplication()).load(tempatFutsal.getFotoProfil()).into(imageView);
-                    etAlamat.setText(tempatFutsal.getAlamat());
                     etKontak.setText(tempatFutsal.getNoTelepon());
                     etDeskripsi.setText(tempatFutsal.getDeskripsi());
                 }

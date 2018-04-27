@@ -8,7 +8,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.Autentikasi.LoginActivity;
+import com.asus.futsalngalam_petugas.MenuAutentikasi.LoginActivity;
 import com.asus.futsalngalam_petugas.CustomGridViewActivity;
 import com.asus.futsalngalam_petugas.MenuPesanan.PesananActivity;
 import com.asus.futsalngalam_petugas.MenuProfil.ProfilActivity;
@@ -47,8 +47,6 @@ public class MainActivity extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
         idUser = user.getUid();
         emailUser = user.getEmail();
-
-
         auth = FirebaseAuth.getInstance();
 
         CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(MainActivity.this, gridViewString, gridViewImageId);

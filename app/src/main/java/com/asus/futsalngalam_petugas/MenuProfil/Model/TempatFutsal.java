@@ -6,7 +6,7 @@ package com.asus.futsalngalam_petugas.MenuProfil.Model;
 
 public class TempatFutsal {
 
-    private String idPetugas, namaTempatFutsal, alamat, deskripsi, noTelepon, fotoProfil;
+    private String idPetugas, namaTempatFutsal, alamat, deskripsi, fotoProfil, noTelepon;
     public double latitude;
     public double longitude;
 
