@@ -11,11 +11,19 @@ import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.asus.futsalngalam_petugas.MenuProfil.List.FasilitasList;
+import com.asus.futsalngalam_petugas.MenuProfil.Model.Fasilitas;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class FasilitasActivity extends AppCompatActivity {
 
@@ -28,6 +36,8 @@ public class FasilitasActivity extends AppCompatActivity {
     private DatabaseReference dbRef;
     private ProgressDialog mProgress;
 
+    private List<Fasilitas> fasilitasList;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -35,6 +45,7 @@ public class FasilitasActivity extends AppCompatActivity {
 
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Fasilitas");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
 
@@ -44,16 +55,43 @@ public class FasilitasActivity extends AppCompatActivity {
         etFasilitas = (EditText) findViewById(R.id.etFasilitas);
         btnTambah = (Button) findViewById(R.id.tambah);
 
+        fasilitasList = new ArrayList<>();
+
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         idPetugas = user.getUid();
 
-        dbRef = FirebaseDatabase.getInstance().getReference("fasilitas");
+        dbRef = FirebaseDatabase.getInstance().getReference();
 
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 tambahFasilitas();
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        dbRef.child("fasilitas").child(idPetugas).addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                fasilitasList.clear();
+                for (DataSnapshot fasilitasSnapshot : dataSnapshot.getChildren()) {
+                    Fasilitas fasilitas = fasilitasSnapshot.getValue(Fasilitas.class);
+
+                    fasilitasList.add(fasilitas);
+                }
+
+                FasilitasList adapter = new FasilitasList(FasilitasActivity.this, fasilitasList);
+                listFasilitas.setAdapter(adapter);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+
             }
         });
     }
@@ -65,13 +103,21 @@ public class FasilitasActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(fasilitas)) {
             mProgress.show();
             String idFasilitas = dbRef.push().getKey();
-            dbRef.child(idPetugas).child(idFasilitas).child("idFasilitas").setValue(idFasilitas);
-            dbRef.child(idPetugas).child(idFasilitas).child("idPetugas").setValue(idPetugas);
-            dbRef.child(idPetugas).child(idFasilitas).child("fasilitas").setValue(fasilitas);
+            dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).child("idFasilitas").setValue(idFasilitas);
+            dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).child("idPetugas").setValue(idPetugas);
+            dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).child("fasilitas").setValue(fasilitas);
+            dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(idFasilitas).child("idFasilitas").setValue(idFasilitas);
+            dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(idFasilitas).child("fasilitas").setValue(fasilitas);
             mProgress.dismiss();
             Toast.makeText(this, "Data berhasil ditambahkan.", Toast.LENGTH_LONG).show();
         } else {
             Toast.makeText(this, "Tidak boleh kosong.", Toast.LENGTH_LONG).show();
         }
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

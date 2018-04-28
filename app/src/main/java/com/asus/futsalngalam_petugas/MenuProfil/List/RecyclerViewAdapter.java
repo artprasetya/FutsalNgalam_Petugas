@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuProfil;
+package com.asus.futsalngalam_petugas.MenuProfil.List;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;

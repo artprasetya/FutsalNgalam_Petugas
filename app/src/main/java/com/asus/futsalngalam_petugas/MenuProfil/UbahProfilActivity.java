@@ -49,7 +49,9 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     private Button btn_simpan,
             btn_simpan_foto,
             btn_ubah_foto,
-            gotoFasilitas;
+            gotoFasilitas,
+            gotoLapangan,
+            gotoRekening;
 
     private ImageView imageView;
 
@@ -93,6 +95,8 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         btn_simpan_foto = (Button) findViewById(R.id.simpan_foto);
         btn_simpan = (Button) findViewById(R.id.btn_simpan);
         gotoFasilitas = (Button) findViewById(R.id.fasilitas);
+        gotoLapangan = (Button) findViewById(R.id.lapangan);
+        gotoRekening = (Button) findViewById(R.id.rekening);
 
         setToolbar();
         getDataFutsal();
@@ -100,6 +104,9 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         btn_ubah_foto.setOnClickListener(this);
         btn_simpan_foto.setOnClickListener(this);
         btn_simpan.setOnClickListener(this);
+        gotoFasilitas.setOnClickListener(this);
+        gotoLapangan.setOnClickListener(this);
+        gotoRekening.setOnClickListener(this);
     }
 
     @Override
@@ -112,6 +119,10 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
             simpanData();
         } else if (view == gotoFasilitas) {
             startActivity(new Intent(UbahProfilActivity.this, FasilitasActivity.class));
+        } else if (view == gotoLapangan) {
+            startActivity(new Intent(UbahProfilActivity.this, LapanganActivity.class));
+        } else if (view == gotoRekening) {
+            startActivity(new Intent(UbahProfilActivity.this, RekeningActivity.class));
         }
     }
 

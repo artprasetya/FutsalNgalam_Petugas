@@ -34,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
 
-
     private String idUser, emailUser;
 
     @Override
@@ -74,9 +73,7 @@ public class MainActivity extends AppCompatActivity {
                         signOut();
                         break;
                 }
-
                 Toast.makeText(MainActivity.this, "  " + gridViewString[+i], Toast.LENGTH_SHORT).show();
-
             }
         });
     }

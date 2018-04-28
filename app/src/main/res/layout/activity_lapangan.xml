@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuProfil.FasilitasActivity">
+    tools:context=".MenuProfil.LapanganActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,10 +17,10 @@
         app:titleTextColor="@color/colorWhite" />
 
     <ListView
-        android:id="@+id/fasilitas_list"
+        android:id="@+id/lapangan_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textview"
+        android:layout_above="@+id/garis"
         android:layout_below="@+id/toolbar"
         android:layout_margin="10dp">
     </ListView>
@@ -37,20 +37,52 @@
         android:id="@+id/textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etFasilitas"
+        android:layout_above="@+id/etLapangan"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Tambahkan Fasilitas : " />
+        android:text="Tambah Lapangan : " />
 
     <EditText
-        android:id="@+id/etFasilitas"
+        android:id="@+id/etLapangan"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
+        android:layout_above="@+id/etHarga"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Fasilitas"
+        android:hint="Nama Lapangan"
         android:paddingLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etHarga"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textview2"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:hint="Harga Sewa"
+        android:paddingLeft="10dp" />
+
+    <TextView
+        android:id="@+id/textview2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/spinner"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:inputType="number"
+        android:text="Pilih Kategori : " />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/button"
+        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:entries="@array/Kategori"
+        android:paddingLeft="5dp">
+    </Spinner>
 
     <LinearLayout
         android:id="@+id/button"
@@ -58,7 +90,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="2">
+        android:weightSum="3">
 
         <Button
             android:id="@+id/tambah"
@@ -67,6 +99,16 @@
             android:layout_weight="1"
             android:background="@color/colorOrange"
             android:text="Tambah"
+            android:textColor="@android:color/white"
+            android:textStyle="bold" />
+
+        <Button
+            android:id="@+id/ubah"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/colorGrey"
+            android:text="Ubah"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 

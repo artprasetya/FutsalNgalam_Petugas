@@ -17,4 +17,16 @@
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
     <string name="title_activity_maps">Map</string>
+
+    <array name="Kategori">
+        <item>Lapangan Besar</item>
+        <item>lapangan Kecil</item>
+    </array>
+
+    <array name="Rekening">
+        <item>Bank BCA</item>
+        <item>Bank BRI</item>
+        <item>Bank BNI</item>
+        <item>Bank Mandiri</item>
+    </array>
 </resources>

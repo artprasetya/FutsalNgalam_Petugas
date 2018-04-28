@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MenuProfil.FasilitasActivity">
+    tools:context=".MenuProfil.RekeningActivity">
 
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
@@ -17,10 +17,10 @@
         app:titleTextColor="@color/colorWhite" />
 
     <ListView
-        android:id="@+id/fasilitas_list"
+        android:id="@+id/rekening_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/textview"
+        android:layout_above="@+id/garis"
         android:layout_below="@+id/toolbar"
         android:layout_margin="10dp">
     </ListView>
@@ -30,26 +30,53 @@
         android:layout_width="fill_parent"
         android:layout_height="3dp"
         android:layout_above="@+id/textview"
-        android:layout_marginBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:background="@color/colorPrimary" />
 
     <TextView
         android:id="@+id/textview"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etFasilitas"
+        android:layout_above="@+id/spinner"
+        android:layout_marginLeft="10dp"
+        android:layout_marginBottom="5dp"
+        android:layout_marginRight="10dp"
+        android:text="Tambahkan Rekening : " />
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_above="@+id/etNamaRekening"
+        android:layout_marginBottom="5dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:text="Tambahkan Fasilitas : " />
+        android:entries="@array/Rekening"
+        android:paddingLeft="5dp">
+    </Spinner>
 
     <EditText
-        android:id="@+id/etFasilitas"
+        android:id="@+id/etNamaRekening"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/etNoRekening"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginBottom="5dp"
+        android:hint="Nama Pemilik Rekening"
+        android:inputType="textPersonName"
+        android:paddingLeft="10dp" />
+
+    <EditText
+        android:id="@+id/etNoRekening"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="10dp"
-        android:hint="Fasilitas"
+        android:layout_marginBottom="10dp"
+        android:hint="Nomor Rekening"
+        android:inputType="number"
         android:paddingLeft="10dp" />
 
     <LinearLayout

@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.asus.futsalngalam_petugas.MenuProfil.List.RecyclerViewAdapter;
 import com.asus.futsalngalam_petugas.MenuProfil.Model.AlbumFoto;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
