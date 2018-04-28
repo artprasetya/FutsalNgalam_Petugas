@@ -30,12 +30,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".MenuAutentikasi.LoginActivity" />
+        <activity android:name=".Autentikasi.LoginActivity" />
         <activity android:name=".MenuProfil.ProfilActivity" />
         <activity android:name=".MenuProfil.UbahProfilActivity" />
         <activity android:name=".MenuPembayaran.PembayaranActivity" />
         <activity android:name=".MenuUlasan.UlasanActivity" />
-        <activity android:name=".MenuBeranda.MainActivity" />
+        <activity android:name=".MenuUtama.MainActivity" />
         <activity android:name=".MenuPesanan.PesananActivity" />
         <activity android:name=".MenuProfil.AlbumFotoActivity" />
         <activity android:name=".MenuProfil.LihatFotoActivity" />

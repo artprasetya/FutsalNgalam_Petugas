@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuAutentikasi;
+package com.asus.futsalngalam_petugas.Autentikasi;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuBeranda.MainActivity;
+import com.asus.futsalngalam_petugas.MenuUtama.MainActivity;
 import com.asus.futsalngalam_petugas.R;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;

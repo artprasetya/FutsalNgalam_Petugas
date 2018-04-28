@@ -4,7 +4,7 @@
  import android.content.Intent;
  import android.os.Bundle;
 
- import com.asus.futsalngalam_petugas.MenuAutentikasi.LoginActivity;
+ import com.asus.futsalngalam_petugas.Autentikasi.LoginActivity;
 
  public class SplashActivity extends Activity {
 

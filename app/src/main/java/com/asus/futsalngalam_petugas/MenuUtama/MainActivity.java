@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuBeranda;
+package com.asus.futsalngalam_petugas.MenuUtama;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,8 +8,7 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuAutentikasi.LoginActivity;
-import com.asus.futsalngalam_petugas.CustomGridViewActivity;
+import com.asus.futsalngalam_petugas.Autentikasi.LoginActivity;
 import com.asus.futsalngalam_petugas.MenuPesanan.PesananActivity;
 import com.asus.futsalngalam_petugas.MenuProfil.ProfilActivity;
 import com.asus.futsalngalam_petugas.MenuUlasan.UlasanActivity;

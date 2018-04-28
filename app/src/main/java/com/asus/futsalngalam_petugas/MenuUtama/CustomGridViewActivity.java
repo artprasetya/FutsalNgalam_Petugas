@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas;
+package com.asus.futsalngalam_petugas.MenuUtama;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -7,6 +7,8 @@ import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.asus.futsalngalam_petugas.R;
 
 public class CustomGridViewActivity extends BaseAdapter {
     private Context mContext;
