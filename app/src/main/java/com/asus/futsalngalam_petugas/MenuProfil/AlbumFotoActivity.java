@@ -41,7 +41,7 @@ public class AlbumFotoActivity extends AppCompatActivity {
     String Database_Path = "tempatFutsal";
 
     // Creating button.
-    Button ChooseButton, UploadButton, DisplayImageButton;
+    Button ChooseButton, UploadButton;
 
     // Creating EditText.
     EditText ImageName;
@@ -68,12 +68,7 @@ public class AlbumFotoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_album_foto);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        toolbar.setTitle("Tambahkan Foto");
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar();
 
         FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
         FirebaseUser user = firebaseAuth.getCurrentUser();
@@ -88,7 +83,6 @@ public class AlbumFotoActivity extends AppCompatActivity {
         //Assign ID'S to button.
         ChooseButton = (Button) findViewById(R.id.ButtonChooseImage);
         UploadButton = (Button) findViewById(R.id.ButtonUploadImage);
-        DisplayImageButton = (Button) findViewById(R.id.DisplayImagesButton);
 
         // Assign ID's to EditText.
         ImageName = (EditText) findViewById(R.id.ImageNameEditText);
@@ -123,19 +117,19 @@ public class AlbumFotoActivity extends AppCompatActivity {
 
                 // Calling method to upload selected image on Firebase storage.
                 UploadImageFileToFirebaseStorage();
-
-            }
-        });
-
-        DisplayImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
                 Intent intent = new Intent(AlbumFotoActivity.this, LihatFotoActivity.class);
                 startActivity(intent);
 
             }
         });
+    }
+
+    private void setToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Tambahkan Foto");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
     @Override

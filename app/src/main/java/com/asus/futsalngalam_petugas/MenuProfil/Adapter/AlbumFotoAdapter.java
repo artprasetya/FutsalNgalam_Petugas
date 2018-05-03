@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuProfil.List;
+package com.asus.futsalngalam_petugas.MenuProfil.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -14,22 +14,20 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
-public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder> {
+public class AlbumFotoAdapter extends RecyclerView.Adapter<AlbumFotoAdapter.ViewHolder> {
 
     Context context;
-    List<AlbumFoto> MainImageUploadInfoList;
+    List<AlbumFoto> albumFotoList;
 
-    public RecyclerViewAdapter(Context context, List<AlbumFoto> TempList) {
-
-        this.MainImageUploadInfoList = TempList;
-
+    public AlbumFotoAdapter(Context context, List<AlbumFoto> TempList) {
         this.context = context;
+        this.albumFotoList = TempList;
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
 
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.recyclerview_items, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.foto_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(view);
 
@@ -38,7 +36,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        AlbumFoto UploadInfo = MainImageUploadInfoList.get(position);
+        AlbumFoto UploadInfo = albumFotoList.get(position);
 
         holder.imageNameTextView.setText(UploadInfo.getImageName());
 
@@ -49,7 +47,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     @Override
     public int getItemCount() {
 
-        return MainImageUploadInfoList.size();
+        return albumFotoList.size();
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

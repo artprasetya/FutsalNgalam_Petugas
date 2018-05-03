@@ -16,73 +16,86 @@
         app:theme="@style/ToolbarStyle"
         app:titleTextColor="@color/colorWhite" />
 
-    <ListView
+    <android.support.v7.widget.RecyclerView
         android:id="@+id/lapangan_list"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/garis"
         android:layout_below="@+id/toolbar"
-        android:layout_margin="10dp">
-    </ListView>
+        android:layout_margin="10dp"></android.support.v7.widget.RecyclerView>
 
     <View
         android:id="@+id/garis"
         android:layout_width="fill_parent"
         android:layout_height="3dp"
-        android:layout_above="@+id/textview"
-        android:layout_marginBottom="5dp"
+        android:layout_above="@+id/form"
         android:background="@color/colorPrimary" />
 
-    <TextView
-        android:id="@+id/textview"
+    <LinearLayout
+        android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/etLapangan"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:text="Tambah Lapangan : " />
-
-    <EditText
-        android:id="@+id/etLapangan"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/etHarga"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:hint="Nama Lapangan"
-        android:paddingLeft="10dp" />
-
-    <EditText
-        android:id="@+id/etHarga"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/textview2"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:hint="Harga Sewa"
-        android:paddingLeft="10dp" />
-
-    <TextView
-        android:id="@+id/textview2"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/spinner"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:inputType="number"
-        android:text="Pilih Kategori : " />
-
-    <Spinner
-        android:id="@+id/spinner"
-        android:layout_width="match_parent"
-        android:layout_height="30dp"
         android:layout_above="@+id/button"
-        android:layout_marginBottom="10dp"
-        android:layout_marginLeft="10dp"
-        android:layout_marginRight="10dp"
-        android:entries="@array/Kategori"
-        android:paddingLeft="5dp">
-    </Spinner>
+        android:background="@color/colorGrey"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/textview"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="5dp"
+            android:text="Tambah Lapangan : "
+            android:textColor="@color/colorWhite" />
+
+        <EditText
+            android:id="@+id/etLapangan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/colorWhite"
+            android:hint="Nama Lapangan"
+            android:paddingLeft="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
+
+        <EditText
+            android:id="@+id/etHarga"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/colorWhite"
+            android:hint="Harga Sewa"
+            android:paddingLeft="10dp"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
+
+        <TextView
+            android:id="@+id/textview2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:inputType="number"
+            android:text="Pilih Kategori : "
+            android:textColor="@color/colorWhite" />
+
+        <Spinner
+            android:id="@+id/spinner"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:backgroundTint="@color/colorWhite"
+            android:entries="@array/Kategori"
+            android:foregroundTint="@color/colorWhite"
+            android:paddingLeft="5dp"></Spinner>
+
+    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/button"
@@ -90,7 +103,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:orientation="horizontal"
-        android:weightSum="3">
+        android:weightSum="1">
 
         <Button
             android:id="@+id/tambah"
@@ -102,25 +115,6 @@
             android:textColor="@android:color/white"
             android:textStyle="bold" />
 
-        <Button
-            android:id="@+id/ubah"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorGrey"
-            android:text="Ubah"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/hapus"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorRed"
-            android:text="Hapus"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
     </LinearLayout>
 
 </RelativeLayout>

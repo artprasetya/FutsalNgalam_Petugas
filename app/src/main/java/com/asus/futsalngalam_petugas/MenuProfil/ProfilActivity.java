@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.asus.futsalngalam_petugas.MapsActivity;
 import com.asus.futsalngalam_petugas.MenuProfil.Model.TempatFutsal;
 import com.asus.futsalngalam_petugas.R;
 import com.bumptech.glide.Glide;
@@ -39,11 +38,6 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
-
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -74,7 +68,7 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         if (view == tvKontak) {
             goToDial();
         } else if (view == btn_foto) {
-            startActivity(new Intent(ProfilActivity.this, AlbumFotoActivity.class));
+            startActivity(new Intent(ProfilActivity.this, LihatFotoActivity.class));
         } else if (view == btnUbah) {
             startActivity(new Intent(ProfilActivity.this, UbahProfilActivity.class));
         } else if (view == mapView) {
@@ -85,6 +79,11 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+
         dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {

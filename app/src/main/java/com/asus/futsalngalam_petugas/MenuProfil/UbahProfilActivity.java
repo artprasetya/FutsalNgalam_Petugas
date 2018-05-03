@@ -73,12 +73,6 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubah_profil);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
-
         dbRef = FirebaseDatabase.getInstance().getReference();
         storageRef = FirebaseStorage.getInstance().getReference();
 
@@ -107,7 +101,7 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         gotoFasilitas.setOnClickListener(this);
         gotoLapangan.setOnClickListener(this);
         gotoRekening.setOnClickListener(this);
-    }
+}
 
     @Override
     public void onClick(View view) {
@@ -127,6 +121,10 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
     }
 
     private void setToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
         dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -194,11 +192,9 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         final String kontak = etKontak.getText().toString().trim();
         final String deskripsi = etDeskripsi.getText().toString().trim();
         if (!TextUtils.isEmpty(kontak) && !TextUtils.isEmpty(deskripsi) && !TextUtils.isEmpty(alamat)) {
-//            String key = dbRef.push().getKey();
             mProgress.show();
             dbRef.child("tempatFutsal").child(idPetugas).child("deskripsi").setValue(deskripsi);
             dbRef.child("tempatFutsal").child(idPetugas).child("noTelepon").setValue(kontak);
-//            dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(key).setValue(fasilitas);
             mProgress.dismiss();
             startActivity(new Intent(UbahProfilActivity.this, ProfilActivity.class));
         }

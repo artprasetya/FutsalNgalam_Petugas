@@ -1,12 +1,16 @@
 package com.asus.futsalngalam_petugas.MenuProfil;
 
 import android.app.ProgressDialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
+import android.widget.Button;
 
-import com.asus.futsalngalam_petugas.MenuProfil.List.RecyclerViewAdapter;
+import com.asus.futsalngalam_petugas.MenuProfil.Adapter.AlbumFotoAdapter;
 import com.asus.futsalngalam_petugas.MenuProfil.Model.AlbumFoto;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -38,11 +42,15 @@ public class LihatFotoActivity extends AppCompatActivity {
 
     private FirebaseAuth auth;
     private String idPetugas;
+    private Button tambahFoto;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lihat_foto);
+
+        setToolbar();
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -82,7 +90,7 @@ public class LihatFotoActivity extends AppCompatActivity {
                     list.add(albumFoto);
                 }
 
-                adapter = new RecyclerViewAdapter(getApplicationContext(), list);
+                adapter = new AlbumFotoAdapter(getApplicationContext(), list);
 
                 recyclerView.setAdapter(adapter);
 
@@ -99,5 +107,27 @@ public class LihatFotoActivity extends AppCompatActivity {
             }
         });
 
+        tambahFoto = (Button) findViewById(R.id.tambahFoto);
+
+        tambahFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LihatFotoActivity.this, AlbumFotoActivity.class));
+            }
+        });
+    }
+
+    private void setToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Foto Lainnya");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

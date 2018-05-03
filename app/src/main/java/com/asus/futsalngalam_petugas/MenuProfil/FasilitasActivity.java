@@ -3,15 +3,16 @@ package com.asus.futsalngalam_petugas.MenuProfil;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.List.FasilitasList;
+import com.asus.futsalngalam_petugas.MenuProfil.Adapter.FasilitasAdapter;
 import com.asus.futsalngalam_petugas.MenuProfil.Model.Fasilitas;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -28,7 +29,6 @@ import java.util.List;
 public class FasilitasActivity extends AppCompatActivity {
 
     private Button btnTambah;
-    private ListView listFasilitas;
     private EditText etFasilitas;
     private Toolbar toolbar;
     private FirebaseAuth auth;
@@ -36,32 +36,42 @@ public class FasilitasActivity extends AppCompatActivity {
     private DatabaseReference dbRef;
     private ProgressDialog mProgress;
 
-    private List<Fasilitas> fasilitasList;
+    // Creating RecyclerView.
+    RecyclerView recyclerView;
+
+    // Creating RecyclerView.Adapter.
+    RecyclerView.Adapter adapter;
+
+    // Creating List of ImageUploadInfo class.
+    List<Fasilitas> fasilitasList = new ArrayList<>();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fasilitas);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Fasilitas");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar();
 
-        mProgress = new ProgressDialog(this);
+        // Assign id to RecyclerView.
+        recyclerView = (RecyclerView) findViewById(R.id.fasilitas_list);
 
-        listFasilitas = (ListView) findViewById(R.id.fasilitas_list);
+        // Setting RecyclerView size true.
+        recyclerView.setHasFixedSize(true);
+
+        // Setting RecyclerView layout as LinearLayout.
+        recyclerView.setLayoutManager(new LinearLayoutManager(FasilitasActivity.this));
+
         etFasilitas = (EditText) findViewById(R.id.etFasilitas);
         btnTambah = (Button) findViewById(R.id.tambah);
 
-        fasilitasList = new ArrayList<>();
+        mProgress = new ProgressDialog(this);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         idPetugas = user.getUid();
 
-        dbRef = FirebaseDatabase.getInstance().getReference();
+        getDataFasilitas();
 
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -71,22 +81,33 @@ public class FasilitasActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
 
-        dbRef.child("fasilitas").child(idPetugas).addValueEventListener(new ValueEventListener() {
+    private void setToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Fasilitas");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
+    //berhasil
+    private void getDataFasilitas() {
+        dbRef = FirebaseDatabase.getInstance().getReference("fasilitas");
+        // Adding Add Value Event Listener to databaseReference.
+        dbRef.child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot snapshot) {
                 fasilitasList.clear();
-                for (DataSnapshot fasilitasSnapshot : dataSnapshot.getChildren()) {
-                    Fasilitas fasilitas = fasilitasSnapshot.getValue(Fasilitas.class);
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+
+                    Fasilitas fasilitas = postSnapshot.getValue(Fasilitas.class);
 
                     fasilitasList.add(fasilitas);
                 }
 
-                FasilitasList adapter = new FasilitasList(FasilitasActivity.this, fasilitasList);
-                listFasilitas.setAdapter(adapter);
+                adapter = new FasilitasAdapter(getApplicationContext(), fasilitasList);
+
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -99,6 +120,7 @@ public class FasilitasActivity extends AppCompatActivity {
     private void tambahFasilitas() {
         mProgress.setMessage("Menambahkan Data");
         String fasilitas = etFasilitas.getText().toString().trim();
+        dbRef = FirebaseDatabase.getInstance().getReference();
 
         if (!TextUtils.isEmpty(fasilitas)) {
             mProgress.show();
@@ -110,6 +132,7 @@ public class FasilitasActivity extends AppCompatActivity {
             dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(idFasilitas).child("fasilitas").setValue(fasilitas);
             mProgress.dismiss();
             Toast.makeText(this, "Data berhasil ditambahkan.", Toast.LENGTH_LONG).show();
+            etFasilitas.setText("");
         } else {
             Toast.makeText(this, "Tidak boleh kosong.", Toast.LENGTH_LONG).show();
         }

@@ -3,16 +3,17 @@ package com.asus.futsalngalam_petugas.MenuProfil;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.List.RekeningList;
+import com.asus.futsalngalam_petugas.MenuProfil.Adapter.RekeningAdapter;
 import com.asus.futsalngalam_petugas.MenuProfil.Model.Rekening;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -30,40 +31,56 @@ public class RekeningActivity extends AppCompatActivity {
 
     private Toolbar toolbar;
     private ProgressDialog mProgress;
-    private ListView listRekening;
     private Spinner spinnerRekening;
     private EditText etNamaRekening;
-    private EditText etNoRekening;
+    private EditText etNomorRekening;
     private Button btnTambah;
-    private List<Rekening> rekeningList;
     private FirebaseAuth auth;
     private String idPetugas;
     private DatabaseReference dbRef;
+
+    // Creating RecyclerView.
+    RecyclerView recyclerView;
+
+    // Creating RecyclerView.Adapter.
+    RecyclerView.Adapter adapter;
+
+    // Creating List of ImageUploadInfo class.
+    List<Rekening> rekeningList = new ArrayList<>();
+
+    public static final String NAMA_BANK = "namaBank";
+    public static final String REKENING_ID = "idRekening";
+    public static final String REKENING_NAMA = "namaRekening";
+    public static final String REKENING_NO = "nomorRekening";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rekening);
 
-        toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Rekening");
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        getSupportActionBar().setDisplayShowHomeEnabled(true);
+        setToolbar();
+
+        // Assign id to RecyclerView.
+        recyclerView = (RecyclerView) findViewById(R.id.rekening_list);
+
+        // Setting RecyclerView size true.
+        recyclerView.setHasFixedSize(true);
+
+        // Setting RecyclerView layout as LinearLayout.
+        recyclerView.setLayoutManager(new LinearLayoutManager(RekeningActivity.this));
 
         mProgress = new ProgressDialog(this);
 
-        listRekening = (ListView) findViewById(R.id.rekening_list);
         spinnerRekening = (Spinner) findViewById(R.id.spinner);
         etNamaRekening = (EditText) findViewById(R.id.etNamaRekening);
-        etNoRekening = (EditText) findViewById(R.id.etNoRekening);
+        etNomorRekening = (EditText) findViewById(R.id.etNomoRekening);
         btnTambah = (Button) findViewById(R.id.tambah);
-
-        rekeningList = new ArrayList<>();
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
         idPetugas = user.getUid();
+
+        getDataRekening();
 
         dbRef = FirebaseDatabase.getInstance().getReference();
 
@@ -75,22 +92,23 @@ public class RekeningActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-
-        dbRef.child("rekening").child(idPetugas).addValueEventListener(new ValueEventListener() {
+    private void getDataRekening() {
+        dbRef = FirebaseDatabase.getInstance().getReference("rekening");
+        // Adding Add Value Event Listener to databaseReference.
+        dbRef.child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            public void onDataChange(DataSnapshot snapshot) {
                 rekeningList.clear();
-                for (DataSnapshot rekeningSnapshot : dataSnapshot.getChildren()) {
-                    Rekening rekening = rekeningSnapshot.getValue(Rekening.class);
+                for (DataSnapshot postSnapshot : snapshot.getChildren()) {
+
+                    Rekening rekening = postSnapshot.getValue(Rekening.class);
 
                     rekeningList.add(rekening);
                 }
 
-                RekeningList adapter = new RekeningList(RekeningActivity.this, rekeningList);
-                listRekening.setAdapter(adapter);
+                adapter = new RekeningAdapter(getApplicationContext(), rekeningList);
+
+                recyclerView.setAdapter(adapter);
             }
 
             @Override
@@ -100,11 +118,19 @@ public class RekeningActivity extends AppCompatActivity {
         });
     }
 
+    private void setToolbar() {
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+        getSupportActionBar().setTitle("Rekening");
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        getSupportActionBar().setDisplayShowHomeEnabled(true);
+    }
+
     private void tambahRekening() {
         mProgress.setMessage("Menambahkan Data");
-        String namaRekening = etNamaRekening.getText().toString().trim();
-        String nomorRekening = etNoRekening.getText().toString().trim();
         String namaBank = spinnerRekening.getSelectedItem().toString();
+        String namaRekening = etNamaRekening.getText().toString().trim();
+        String nomorRekening = etNomorRekening.getText().toString().trim();
 
         if (!TextUtils.isEmpty(namaRekening) && (!TextUtils.isEmpty(nomorRekening))) {
             mProgress.show();
@@ -118,6 +144,8 @@ public class RekeningActivity extends AppCompatActivity {
             dbRef.child("tempatFutsal").child(idPetugas).child("rekening").child(idRekening).child("namaBank").setValue(namaBank);
             mProgress.dismiss();
             Toast.makeText(this, "Data berhasil ditambahkan.", Toast.LENGTH_LONG).show();
+            etNomorRekening.setText("");
+            etNamaRekening.setText("");
         } else {
             Toast.makeText(this, "Lengkapi data.", Toast.LENGTH_LONG).show();
         }
