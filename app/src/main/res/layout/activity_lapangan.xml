@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/garis"
         android:layout_below="@+id/toolbar"
-        android:layout_margin="10dp"></android.support.v7.widget.RecyclerView>
+        android:layout_margin="10dp" />
 
     <View
         android:id="@+id/garis"

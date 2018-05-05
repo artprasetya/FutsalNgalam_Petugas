@@ -1,6 +1,7 @@
 package com.asus.futsalngalam_petugas.MenuProfil;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -45,11 +46,14 @@ public class FasilitasActivity extends AppCompatActivity {
     // Creating List of ImageUploadInfo class.
     List<Fasilitas> fasilitasList = new ArrayList<>();
 
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fasilitas);
+
+        context = this;
 
         setToolbar();
 
@@ -105,7 +109,7 @@ public class FasilitasActivity extends AppCompatActivity {
                     fasilitasList.add(fasilitas);
                 }
 
-                adapter = new FasilitasAdapter(getApplicationContext(), fasilitasList);
+                adapter = new FasilitasAdapter(context, fasilitasList);
 
                 recyclerView.setAdapter(adapter);
             }

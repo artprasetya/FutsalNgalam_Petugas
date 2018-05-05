@@ -1,6 +1,8 @@
 package com.asus.futsalngalam_petugas.MenuProfil.Model;
 
-public class Lapangan {
+import java.io.Serializable;
+
+public class Lapangan implements Serializable {
     String idLapangan, idPetugas, namaLapangan, kategori;
     double hargaSewa;
 

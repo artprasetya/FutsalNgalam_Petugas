@@ -1,6 +1,7 @@
 package com.asus.futsalngalam_petugas.MenuProfil;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,10 +49,14 @@ public class LapanganActivity extends AppCompatActivity {
     // Creating List of ImageUploadInfo class.
     List<Lapangan> lapanganList = new ArrayList<>();
 
+    Context context;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_lapangan);
+
+        context = this;
 
         setToolbar();
 
@@ -63,7 +68,6 @@ public class LapanganActivity extends AppCompatActivity {
 
         // Setting RecyclerView layout as LinearLayout.
         recyclerView.setLayoutManager(new LinearLayoutManager(LapanganActivity.this));
-
 
         mProgress = new ProgressDialog(this);
 
@@ -77,8 +81,6 @@ public class LapanganActivity extends AppCompatActivity {
         idPetugas = user.getUid();
 
         getDataLapangan();
-
-        dbRef = FirebaseDatabase.getInstance().getReference();
 
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -102,7 +104,7 @@ public class LapanganActivity extends AppCompatActivity {
                     lapanganList.add(lapangan);
                 }
 
-                adapter = new LapanganAdapter(getApplicationContext(), lapanganList);
+                adapter = new LapanganAdapter(context, lapanganList);
 
                 recyclerView.setAdapter(adapter);
             }
@@ -122,37 +124,13 @@ public class LapanganActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
 
-    //awal
-//    @Override
-//    protected void onStart() {
-//        super.onStart();
-//        dbRef.child("lapangan").child(idPetugas).addValueEventListener(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(DataSnapshot dataSnapshot) {
-//                lapanganList.clear();
-//                for (DataSnapshot lapanganSnapshot : dataSnapshot.getChildren()) {
-//                    Lapangan lapangan = lapanganSnapshot.getValue(Lapangan.class);
-//
-//                    lapanganList.add(lapangan);
-//                }
-//
-//                LapanganAdapter adapter = new LapanganAdapter(LapanganActivity.this, lapanganList);
-//                listLapangan.setAdapter(adapter);
-//            }
-//
-//            @Override
-//            public void onCancelled(DatabaseError databaseError) {
-//
-//            }
-//        });
-//    }
-
     private void tambahLapangan() {
         mProgress.setMessage("Menambahkan Data");
         String namaLapangan = etLapangan.getText().toString().trim();
         double hargaSewa = Double.valueOf(etHarga.getText().toString().trim());
         String kategori = spinnerKategori.getSelectedItem().toString();
 
+        dbRef = FirebaseDatabase.getInstance().getReference();
         if (!TextUtils.isEmpty(namaLapangan) && (etHarga.getText().toString() != null)) {
             mProgress.show();
             String idLapangan = dbRef.push().getKey();

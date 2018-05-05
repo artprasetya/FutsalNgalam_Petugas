@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MenuProfil.UbahRekeningActivity">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/colorPrimary"
+        android:minHeight="56dp"
+        app:subtitleTextColor="@color/colorWhite"
+        app:theme="@style/ToolbarStyle"
+        app:titleTextColor="@color/colorWhite" />
+
+    <LinearLayout
+        android:id="@+id/form"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:layout_margin="5dp"
+        android:background="@color/colorGrey"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/fasilitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:padding="5dp"
+            android:text="Fasilitas"
+            android:textAlignment="center"
+            android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+        <EditText
+            android:id="@+id/ubahNamaFasilitas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:backgroundTint="@color/colorWhite"
+            android:hint="Nama Fasilitas"
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
+
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimary" />
+
+        <Button
+            android:id="@+id/simpanUbahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorOrange"
+            android:text="Simpan"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>

@@ -48,8 +48,6 @@ public class UbahRekeningActivity extends AppCompatActivity {
         FirebaseUser user = auth.getCurrentUser();
         idPetugas = user.getUid();
 
-        dbRef = FirebaseDatabase.getInstance().getReference();
-
         getDataRekening();
 
         btnSimpan.setOnClickListener(new View.OnClickListener() {
@@ -65,9 +63,10 @@ public class UbahRekeningActivity extends AppCompatActivity {
         String namaRekening = ubahNamaRekening.getText().toString().trim();
         String nomorRekening = ubahNomorRekening.getText().toString().trim();
 
+        dbRef = FirebaseDatabase.getInstance().getReference("rekening");
         if (!TextUtils.isEmpty(namaRekening) && (!TextUtils.isEmpty(nomorRekening))) {
-            dbRef.child("rekening").child(idPetugas).child(idRekening).child("namaRekening").setValue(namaRekening);
-            dbRef.child("rekening").child(idPetugas).child(idRekening).child("nomorRekening").setValue(nomorRekening);
+            dbRef.child(idPetugas).child(idRekening).child("namaRekening").setValue(namaRekening);
+            dbRef.child(idPetugas).child(idRekening).child("nomorRekening").setValue(nomorRekening);
             Toast.makeText(this, "Data berhasil diperbarui.", Toast.LENGTH_LONG).show();
             startActivity(new Intent(UbahRekeningActivity.this, RekeningActivity.class));
         } else {
@@ -77,9 +76,9 @@ public class UbahRekeningActivity extends AppCompatActivity {
     }
 
     private void getDataRekening() {
-        String idRekening = getIntent().getStringExtra("data");
-
-        dbRef.child("rekening").child(idPetugas).child(idRekening).addValueEventListener(new ValueEventListener() {
+        String idRekening = getIntent().getStringExtra("idRekening");
+        dbRef = FirebaseDatabase.getInstance().getReference("rekening");
+        dbRef.child(idPetugas).child(idRekening).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Rekening rekening = dataSnapshot.getValue(Rekening.class);

@@ -1,6 +1,8 @@
 package com.asus.futsalngalam_petugas.MenuProfil.Model;
 
-public class Fasilitas {
+import java.io.Serializable;
+
+public class Fasilitas implements Serializable {
 
     String idFasilitas,idPetugas, fasilitas;
 
