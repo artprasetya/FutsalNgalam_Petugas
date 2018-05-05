@@ -82,7 +82,7 @@ public class LihatFotoActivity extends AppCompatActivity {
         databaseReference.child(idPetugas).child("album").addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot snapshot) {
-
+                list.clear();
                 for (DataSnapshot postSnapshot : snapshot.getChildren()) {
 
                     AlbumFoto albumFoto = postSnapshot.getValue(AlbumFoto.class);

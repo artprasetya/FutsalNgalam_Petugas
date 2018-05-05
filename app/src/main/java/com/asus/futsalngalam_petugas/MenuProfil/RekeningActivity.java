@@ -1,6 +1,7 @@
 package com.asus.futsalngalam_petugas.MenuProfil;
 
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -48,15 +49,14 @@ public class RekeningActivity extends AppCompatActivity {
     // Creating List of ImageUploadInfo class.
     List<Rekening> rekeningList = new ArrayList<>();
 
-    public static final String NAMA_BANK = "namaBank";
-    public static final String REKENING_ID = "idRekening";
-    public static final String REKENING_NAMA = "namaRekening";
-    public static final String REKENING_NO = "nomorRekening";
+    Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_rekening);
+
+        context = this;
 
         setToolbar();
 
@@ -82,8 +82,6 @@ public class RekeningActivity extends AppCompatActivity {
 
         getDataRekening();
 
-        dbRef = FirebaseDatabase.getInstance().getReference();
-
         btnTambah.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -106,7 +104,7 @@ public class RekeningActivity extends AppCompatActivity {
                     rekeningList.add(rekening);
                 }
 
-                adapter = new RekeningAdapter(getApplicationContext(), rekeningList);
+                adapter = new RekeningAdapter(context, rekeningList);
 
                 recyclerView.setAdapter(adapter);
             }
@@ -132,6 +130,7 @@ public class RekeningActivity extends AppCompatActivity {
         String namaRekening = etNamaRekening.getText().toString().trim();
         String nomorRekening = etNomorRekening.getText().toString().trim();
 
+        dbRef = FirebaseDatabase.getInstance().getReference();
         if (!TextUtils.isEmpty(namaRekening) && (!TextUtils.isEmpty(nomorRekening))) {
             mProgress.show();
             String idRekening = dbRef.push().getKey();

@@ -36,7 +36,6 @@
         <activity android:name=".MenuProfil.FasilitasActivity" />
         <activity android:name=".MenuProfil.LapanganActivity" />
         <activity android:name=".MenuProfil.RekeningActivity" />
-        <activity android:name=".MenuProfil.UbahRekeningActivity" />
         <!--
              The API key for Google Maps-based APIs is defined as a string resource.
              (See the file "res/values/google_maps_api.xml").
@@ -51,7 +50,8 @@
 
         <activity
             android:name=".MenuProfil.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".MenuProfil.UbahRekeningActivity"></activity>
     </application>
 
 </manifest>

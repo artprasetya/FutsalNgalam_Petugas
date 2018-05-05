@@ -1,6 +1,8 @@
 package com.asus.futsalngalam_petugas.MenuProfil.Model;
 
-public class Rekening {
+import java.io.Serializable;
+
+public class Rekening implements Serializable {
 
     String idPetugas, idRekening, namaBank, namaRekening, nomorRekening;
 

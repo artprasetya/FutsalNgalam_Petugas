@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     tools:context=".MenuProfil.UbahRekeningActivity">
 
     <android.support.v7.widget.Toolbar
@@ -18,83 +17,59 @@
         app:titleTextColor="@color/colorWhite" />
 
     <LinearLayout
-        android:id="@+id/layout1"
+        android:id="@+id/form"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:background="@color/colorGrey"
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/tvNamaBank"
+            android:id="@+id/namaBank"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
-            android:background="@color/colorPrimary"
-            android:gravity="center_vertical"
-            android:text="NAMA BANK"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimaryDark"
+            android:padding="5dp"
+            android:text="Nama Bank"
             android:textAlignment="center"
             android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
             android:textColor="@color/colorWhite"
             android:textStyle="bold" />
 
-
         <EditText
-            android:id="@+id/etNamaRekening"
+            android:id="@+id/ubahNamaRekening"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="@color/colorWhite"
             android:hint="Nama Rekening"
-            android:inputType="textPersonName"
-            android:textColorHint="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
 
-        <view
-            android:layout_width="match_parent"
-            android:layout_height="2dp"
-            android:backgroundTint="@color/colorPrimary">
-        </view>
+        <View
+            android:layout_width="fill_parent"
+            android:layout_height="3dp"
+            android:background="@color/colorPrimary" />
 
         <EditText
-            android:id="@+id/etNomorRekening"
+            android:id="@+id/ubahNomorRekening"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:backgroundTint="@color/colorWhite"
             android:hint="Nomor Rekening"
-            android:inputType="number"
-            android:textColorHint="@color/colorWhite"
-            android:textSize="20sp" />
+            android:textColor="@color/colorWhite"
+            android:textColorHint="@color/colorWhite" />
 
-        <!--<LinearLayout-->
-        <!--android:id="@+id/button"-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_alignParentBottom="true"-->
-        <!--android:orientation="horizontal"-->
-        <!--android:weightSum="2">-->
-
-        <!--<Button-->
-        <!--android:id="@+id/simpan"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:background="@color/colorOrange"-->
-        <!--android:text="Simpan"-->
-        <!--android:textColor="@android:color/white"-->
-        <!--android:textStyle="bold" />-->
-
-        <!--<Button-->
-        <!--android:id="@+id/hapus"-->
-        <!--android:layout_width="0dp"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:layout_weight="1"-->
-        <!--android:background="@color/colorRed"-->
-        <!--android:text="Hapus"-->
-        <!--android:textColor="@android:color/white"-->
-        <!--android:textStyle="bold" />-->
-        <!--</LinearLayout>-->
+        <Button
+            android:id="@+id/simpanUbahan"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorOrange"
+            android:text="Simpan"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
 
     </LinearLayout>
 
