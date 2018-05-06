@@ -34,6 +34,8 @@ public class UbahFasilitasActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ubah_fasilitas);
 
+        setToolbar();
+
         ubahNamaFasilitas = (EditText) findViewById(R.id.ubahNamaFasilitas);
         btnSimpan = (Button) findViewById(R.id.simpanUbahan);
 
@@ -88,7 +90,7 @@ public class UbahFasilitasActivity extends AppCompatActivity {
     private void setToolbar() {
         toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        getSupportActionBar().setTitle("Ubah Lapangan");
+        getSupportActionBar().setTitle("Ubah Fasilitas");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }

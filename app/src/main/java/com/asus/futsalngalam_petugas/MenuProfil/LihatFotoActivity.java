@@ -74,6 +74,19 @@ public class LihatFotoActivity extends AppCompatActivity {
         // Showing progress dialog.
         progressDialog.show();
 
+        getDataFoto();
+
+        tambahFoto = (Button) findViewById(R.id.tambahFoto);
+
+        tambahFoto.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(LihatFotoActivity.this, AlbumFotoActivity.class));
+            }
+        });
+    }
+
+    private void getDataFoto() {
         // Setting up Firebase image upload folder path in databaseReference.
         // The path is already defined in MainActivity.
         databaseReference = FirebaseDatabase.getInstance().getReference("tempatFutsal");
@@ -104,15 +117,6 @@ public class LihatFotoActivity extends AppCompatActivity {
                 // Hiding the progress dialog.
                 progressDialog.dismiss();
 
-            }
-        });
-
-        tambahFoto = (Button) findViewById(R.id.tambahFoto);
-
-        tambahFoto.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(LihatFotoActivity.this, AlbumFotoActivity.class));
             }
         });
     }
