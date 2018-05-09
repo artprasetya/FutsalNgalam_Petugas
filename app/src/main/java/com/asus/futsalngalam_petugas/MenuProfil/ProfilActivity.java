@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Model.TempatFutsal;
 import com.asus.futsalngalam_petugas.R;
 import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
@@ -39,11 +38,13 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profil);
 
+        dbRef = FirebaseDatabase.getInstance().getReference();
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
+        assert user != null;
         idPetugas = user.getUid();
 
-        dbRef = FirebaseDatabase.getInstance().getReference();
+        setToolbar();
 
         imageView = (ImageView) findViewById(R.id.imageView);
         mapView = (ImageView) findViewById(R.id.maps);
@@ -53,14 +54,13 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         btn_foto = (Button) findViewById(R.id.btn_foto);
         btnUbah = (Button) findViewById(R.id.btn_ubah);
 
+        getDataFutsal();
+
         mapView.setOnClickListener(this);
         btn_foto.setOnClickListener(this);
         tvKontak.setOnClickListener(this);
         btnUbah.setOnClickListener(this);
         whatsapp.setOnClickListener(this);
-
-        setToolbar();
-        getDataFutsal();
     }
 
     @Override
@@ -99,22 +99,23 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
         });
     }
 
-    @Override
-    public boolean onSupportNavigateUp() {
-        onBackPressed();
-        return true;
-    }
-
     public void getDataFutsal() {
         dbRef.child("tempatFutsal").child(idPetugas).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
-                TempatFutsal tempatFutsal = dataSnapshot.getValue(TempatFutsal.class);
-                if (tempatFutsal != null) {
-                    Glide.with(getApplication()).load(tempatFutsal.getFotoProfil()).into(imageView);
-                    tvKontak.setText(tempatFutsal.getNoTelepon());
-                    tvDeskripsi.setText(tempatFutsal.getDeskripsi());
-                }
+                String kontak = (String) dataSnapshot.child("noTelepon").getValue();
+                String deskripsi = (String) dataSnapshot.child("deskripsi").getValue();
+                String fotoProfil = (String) dataSnapshot.child("fotoProfil").getValue();
+
+                tvKontak.setText(kontak);
+                tvDeskripsi.setText(deskripsi);
+                Glide.with(getApplication()).load(fotoProfil).into(imageView);
+
+//                TempatFutsal tempatFutsal = dataSnapshot.getValue(TempatFutsal.class);
+//                if (tempatFutsal != null) {
+//                    Glide.with(getApplication()).load(tempatFutsal.getFotoProfil()).into(imageView);
+//                    tvKontak.setText(tempatFutsal.getNoTelepon());
+//                    tvDeskripsi.setText(tempatFutsal.getDeskripsi());
             }
 
             @Override
@@ -155,5 +156,11 @@ public class ProfilActivity extends AppCompatActivity implements View.OnClickLis
 
             }
         });
+    }
+
+    @Override
+    public boolean onSupportNavigateUp() {
+        onBackPressed();
+        return true;
     }
 }

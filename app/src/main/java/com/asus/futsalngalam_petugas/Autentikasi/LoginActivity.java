@@ -53,6 +53,16 @@ public class LoginActivity extends Activity {
                 String email = inputEmail.getText().toString();
                 String password = inputPassword.getText().toString();
 
+                if (TextUtils.isEmpty(email)) {
+                    Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
+                if (TextUtils.isEmpty(password)) {
+                    Toast.makeText(getApplicationContext(), "Enter password!", Toast.LENGTH_SHORT).show();
+                    return;
+                }
+
                 if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
                     progressBar.setVisibility(View.VISIBLE);
 

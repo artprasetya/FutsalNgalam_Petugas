@@ -93,7 +93,7 @@
             android:backgroundTint="@color/colorWhite"
             android:entries="@array/Kategori"
             android:foregroundTint="@color/colorWhite"
-            android:paddingLeft="5dp"></Spinner>
+            android:paddingLeft="5dp" />
 
     </LinearLayout>
 
