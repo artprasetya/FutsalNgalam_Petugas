@@ -10,8 +10,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Adapter.AlbumFotoAdapter;
-import com.asus.futsalngalam_petugas.MenuProfil.Model.AlbumFoto;
+import com.asus.futsalngalam_petugas.Adapter.AlbumFotoAdapter;
+import com.asus.futsalngalam_petugas.Model.AlbumFoto;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

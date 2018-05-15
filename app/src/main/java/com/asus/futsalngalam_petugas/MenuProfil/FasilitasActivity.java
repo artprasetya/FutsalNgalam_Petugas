@@ -13,8 +13,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Adapter.FasilitasAdapter;
-import com.asus.futsalngalam_petugas.MenuProfil.Model.Fasilitas;
+import com.asus.futsalngalam_petugas.Adapter.FasilitasAdapter;
+import com.asus.futsalngalam_petugas.Model.Fasilitas;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuProfil.Adapter;
+package com.asus.futsalngalam_petugas.Adapter;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -11,45 +11,45 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Model.Rekening;
+import com.asus.futsalngalam_petugas.Model.Lapangan;
 import com.asus.futsalngalam_petugas.MenuProfil.RekeningActivity;
-import com.asus.futsalngalam_petugas.MenuProfil.UbahRekeningActivity;
+import com.asus.futsalngalam_petugas.MenuProfil.UbahLapanganActivity;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.List;
 
-public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHolder> implements View.OnClickListener {
+public class LapanganAdapter extends RecyclerView.Adapter<LapanganAdapter.ViewHolder> implements View.OnClickListener {
 
     Context context;
     LayoutInflater mInflater;
-    private List<Rekening> rekeningList;
+    private List<Lapangan> lapanganList;
     private DatabaseReference dbRef;
 
-    public RekeningAdapter(Context context, List<Rekening> rekeningList) {
+    public LapanganAdapter(Context context, List<Lapangan> lapanganList) {
         this.context = context;
-        this.rekeningList = rekeningList;
+        this.lapanganList = lapanganList;
 
         mInflater = LayoutInflater.from(context);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
 
-        public TextView tvNamaBank;
-        public TextView tvNamaRekeninig;
+        public TextView tvNamaLapangan;
+        public TextView tvHarga;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
-            tvNamaBank = (TextView) itemView.findViewById(R.id.tvNamaBank);
-            tvNamaRekeninig = (TextView) itemView.findViewById(R.id.tvNamaRekening);
+            tvNamaLapangan = (TextView) itemView.findViewById(R.id.tvNamaLapangan);
+            tvHarga = (TextView) itemView.findViewById(R.id.tvHarga);
         }
     }
 
     @Override
     public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.rekening_items, parent, false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.lapangan_items, parent, false);
 
         ViewHolder viewHolder = new ViewHolder(view);
 
@@ -57,19 +57,18 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
     }
 
     @Override
-    public void onBindViewHolder(final ViewHolder holder, final int position) {
-
+    public void onBindViewHolder(ViewHolder holder, final int position) {
         dbRef = FirebaseDatabase.getInstance().getReference();
 
-        final String idPetugas = rekeningList.get(position).getIdPetugas();
-        final String idRekening = rekeningList.get(position).getIdRekening();
-        final String namaRekening = rekeningList.get(position).getNamaRekening();
-        final String namaBank = rekeningList.get(position).getNamaBank();
+        final String idPetugas = lapanganList.get(position).getIdPetugas();
+        final String idLapangan = lapanganList.get(position).getIdLapangan();
+        final String namaLapangan = lapanganList.get(position).getNamaLapangan();
+        final double hargaSewa = lapanganList.get(position).getHargaSewa();
 
-        holder.tvNamaRekeninig.setText(namaRekening);
-        holder.tvNamaBank.setText(namaBank);
+        holder.tvNamaLapangan.setText(namaLapangan);
+        holder.tvHarga.setText("Rp. " + String.valueOf(hargaSewa));
 
-        holder.tvNamaRekeninig.setOnLongClickListener(new View.OnLongClickListener() {
+        holder.tvNamaLapangan.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
             public boolean onLongClick(View v) {
                 final Dialog dialog = new Dialog(context);
@@ -80,24 +79,22 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
                 Button editButton = (Button) dialog.findViewById(R.id.ubah);
                 Button delButton = (Button) dialog.findViewById(R.id.hapus);
 
-                //apabila tombol edit diklik
                 editButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View v) {
                         dialog.dismiss();
-                        Intent intent = new Intent(context, UbahRekeningActivity.class);
-                        intent.putExtra("idRekening", rekeningList.get(position).getIdRekening());
+                        Intent intent = new Intent(context, UbahLapanganActivity.class);
+                        intent.putExtra("idLapangan", lapanganList.get(position).getIdLapangan());
                         context.startActivity(intent);
                     }
                 });
 
-                //apabila tombol delete diklik
                 delButton.setOnClickListener(new View.OnClickListener() {
                     @Override
-                    public void onClick(View view) {
+                    public void onClick(View v) {
                         dialog.dismiss();
-                        dbRef.child("rekening").child(idPetugas).child(idRekening).removeValue();
-                        dbRef.child("tempatFutsal").child(idPetugas).child("rekening").child(idRekening).removeValue();
+                        dbRef.child("lapangan").child(idPetugas).child(idLapangan).removeValue();
+                        dbRef.child("tempatFutsal").child(idPetugas).child("lapangan").child(idLapangan).removeValue();
                         Toast.makeText(context, "Data Berhasil Dihapus.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(context, RekeningActivity.class);
                         context.startActivity(intent);
@@ -106,11 +103,12 @@ public class RekeningAdapter extends RecyclerView.Adapter<RekeningAdapter.ViewHo
                 return true;
             }
         });
+
     }
 
     @Override
     public int getItemCount() {
-        return rekeningList.size();
+        return lapanganList.size();
     }
 
     @Override

@@ -14,8 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Adapter.RekeningAdapter;
-import com.asus.futsalngalam_petugas.MenuProfil.Model.Rekening;
+import com.asus.futsalngalam_petugas.Adapter.RekeningAdapter;
+import com.asus.futsalngalam_petugas.Model.Rekening;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

@@ -14,8 +14,8 @@ import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Adapter.LapanganAdapter;
-import com.asus.futsalngalam_petugas.MenuProfil.Model.Lapangan;
+import com.asus.futsalngalam_petugas.Adapter.LapanganAdapter;
+import com.asus.futsalngalam_petugas.Model.Lapangan;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;

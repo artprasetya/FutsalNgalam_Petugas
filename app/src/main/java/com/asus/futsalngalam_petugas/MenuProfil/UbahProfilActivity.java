@@ -18,7 +18,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Model.TempatFutsal;
+import com.asus.futsalngalam_petugas.Model.TempatFutsal;
 import com.asus.futsalngalam_petugas.R;
 import com.bumptech.glide.Glide;
 import com.google.android.gms.tasks.OnFailureListener;

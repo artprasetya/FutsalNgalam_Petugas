@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuProfil.Model;
+package com.asus.futsalngalam_petugas.Model;
 
 import java.io.Serializable;
 

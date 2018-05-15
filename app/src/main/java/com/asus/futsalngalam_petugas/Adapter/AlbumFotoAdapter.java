@@ -1,4 +1,4 @@
-package com.asus.futsalngalam_petugas.MenuProfil.Adapter;
+package com.asus.futsalngalam_petugas.Adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Model.AlbumFoto;
+import com.asus.futsalngalam_petugas.Model.AlbumFoto;
 import com.asus.futsalngalam_petugas.R;
 import com.bumptech.glide.Glide;
 

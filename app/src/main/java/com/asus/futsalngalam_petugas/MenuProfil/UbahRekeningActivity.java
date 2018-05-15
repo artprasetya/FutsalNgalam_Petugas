@@ -11,7 +11,7 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Model.Rekening;
+import com.asus.futsalngalam_petugas.Model.Rekening;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -59,7 +59,7 @@ public class UbahRekeningActivity extends AppCompatActivity {
     }
 
     private void updateRekening() {
-        String idRekening = getIntent().getStringExtra("data");
+        String idRekening = getIntent().getStringExtra("idRekening");
         String namaRekening = ubahNamaRekening.getText().toString().trim();
         String nomorRekening = ubahNomorRekening.getText().toString().trim();
 

@@ -17,7 +17,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
-import com.asus.futsalngalam_petugas.MenuProfil.Model.AlbumFoto;
+import com.asus.futsalngalam_petugas.Model.AlbumFoto;
 import com.asus.futsalngalam_petugas.R;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
