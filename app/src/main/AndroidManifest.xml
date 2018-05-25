@@ -30,7 +30,7 @@
         <activity android:name=".MenuProfil.UbahProfilActivity" />
         <activity android:name=".MenuUlasan.UlasanActivity" />
         <activity android:name=".MenuUtama.MainActivity" />
-        <activity android:name=".MenuPesanan.PesananActivity" />
+        <activity android:name=".MenuPesanan.DaftarPesananActivity" />
         <activity android:name=".MenuProfil.AlbumFotoActivity" />
         <activity android:name=".MenuProfil.LihatFotoActivity" />
         <activity android:name=".MenuProfil.FasilitasActivity" />
@@ -53,7 +53,9 @@
             android:label="@string/title_activity_maps" />
         <activity android:name=".MenuProfil.UbahRekeningActivity" />
         <activity android:name=".MenuProfil.UbahLapanganActivity" />
-        <activity android:name=".MenuProfil.UbahFasilitasActivity"></activity>
+        <activity android:name=".MenuProfil.UbahFasilitasActivity" />
+        <activity android:name=".MenuPesanan.DetailPesananActivity" />
+        <activity android:name=".MenuPesanan.BuktiPembayaranActivity"></activity>
     </application>
 
 </manifest>

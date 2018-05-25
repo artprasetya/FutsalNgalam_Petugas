@@ -78,7 +78,10 @@
                     android:id="@+id/layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/colorWhite"
                     android:orientation="vertical">
 
@@ -88,21 +91,25 @@
                         android:background="@color/colorPrimary" />
 
                     <TextView
+                        android:textColor="@color/colorWhite"
+                        android:background="@color/colorOrange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:text="Deskripsi : "
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <TextView
+                        android:textSize="16sp"
+                        android:text="Deskripsi"
                         android:id="@+id/tvDeskripsi"
                         android:layout_width="match_parent"
                         android:layout_height="100dp"
-                        android:background="@null"
                         android:overScrollMode="ifContentScrolls"
-                        android:paddingLeft="15dp"
-                        android:paddingRight="15dp" />
+                        android:padding="10dp"/>
 
                     <View
                         android:layout_width="fill_parent"
@@ -112,8 +119,11 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:textColor="@color/colorWhite"
+                        android:background="@color/colorOrange"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:text="Kontak : "
                         android:textSize="18dp"
                         android:textStyle="bold" />

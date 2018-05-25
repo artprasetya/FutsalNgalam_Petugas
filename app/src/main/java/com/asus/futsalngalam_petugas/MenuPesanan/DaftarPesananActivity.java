@@ -23,7 +23,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PesananActivity extends AppCompatActivity {
+public class DaftarPesananActivity extends AppCompatActivity {
     // Creating DatabaseReference.
     DatabaseReference dbRef;
 
@@ -65,10 +65,10 @@ public class PesananActivity extends AppCompatActivity {
         recyclerView.setHasFixedSize(true);
 
         // Setting RecyclerView layout as LinearLayout.
-        recyclerView.setLayoutManager(new LinearLayoutManager(PesananActivity.this));
+        recyclerView.setLayoutManager(new LinearLayoutManager(DaftarPesananActivity.this));
 
         // Assign activity this to progress dialog.
-        progressDialog = new ProgressDialog(PesananActivity.this);
+        progressDialog = new ProgressDialog(DaftarPesananActivity.this);
 
         // Setting up message in Progress dialog.
         progressDialog.setMessage("Memuat...");
@@ -126,5 +126,4 @@ public class PesananActivity extends AppCompatActivity {
         onBackPressed();
         return true;
     }
-
 }

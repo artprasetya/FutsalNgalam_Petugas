@@ -9,7 +9,7 @@ import android.widget.GridView;
 import android.widget.Toast;
 
 import com.asus.futsalngalam_petugas.Autentikasi.LoginActivity;
-import com.asus.futsalngalam_petugas.MenuPesanan.PesananActivity;
+import com.asus.futsalngalam_petugas.MenuPesanan.DaftarPesananActivity;
 import com.asus.futsalngalam_petugas.MenuProfil.ProfilActivity;
 import com.asus.futsalngalam_petugas.MenuUlasan.UlasanActivity;
 import com.asus.futsalngalam_petugas.R;
@@ -62,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
                         view.getContext().startActivity(a);
                         break;
                     case 1:
-                        Intent b = new Intent(view.getContext(), PesananActivity.class);
+                        Intent b = new Intent(view.getContext(), DaftarPesananActivity.class);
                         view.getContext().startActivity(b);
                         break;
                     case 2:

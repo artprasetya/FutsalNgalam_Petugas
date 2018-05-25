@@ -77,29 +77,29 @@
                     android:id="@+id/layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="5dp"
                     android:background="@color/colorWhite"
                     android:orientation="vertical">
 
-                    <View
-                        android:layout_width="fill_parent"
-                        android:layout_height="3dp"
-                        android:background="@color/colorPrimary" />
-
                     <TextView
+                        android:textColor="@color/colorWhite"
+                        android:background="@color/colorOrange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:text="Deskripsi : "
-                        android:textSize="18dp"
+                        android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/etDeskripsi"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:background="@null"
+                        android:layout_height="100dp"
                         android:hint="Deskripsi tempat futsal"
                         android:overScrollMode="ifContentScrolls"
                         android:paddingLeft="10dp"
@@ -110,49 +110,14 @@
                         android:layout_height="5dp"
                         android:background="@color/colorPrimary" />
 
-                    <!--<TextView-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:paddingLeft="10dp"-->
-                        <!--android:paddingTop="5dp"-->
-                        <!--android:text="Fasilitas : "-->
-                        <!--android:textSize="18dp"-->
-                        <!--android:textStyle="bold" />-->
-
-                    <!--<ListView-->
-                        <!--android:id="@+id/lvFasilitas"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:background="@null"-->
-                        <!--android:hint="List fasilitas"-->
-                        <!--android:overScrollMode="ifContentScrolls"-->
-                        <!--android:paddingLeft="15dp"-->
-                        <!--android:paddingRight="15dp" />-->
-
-                    <!--<View-->
-                        <!--android:layout_width="fill_parent"-->
-                        <!--android:layout_height="2dp"-->
-                        <!--android:background="@color/colorPrimary" />-->
-
-                    <!--<EditText-->
-                        <!--android:id="@+id/etFasilitas"-->
-                        <!--android:layout_width="match_parent"-->
-                        <!--android:layout_height="wrap_content"-->
-                        <!--android:layout_marginLeft="10dp"-->
-                        <!--android:layout_marginRight="10dp"-->
-                        <!--android:hint="Tambah Fasilitas" />-->
-
-
-                    <!--<View-->
-                        <!--android:layout_width="fill_parent"-->
-                        <!--android:layout_height="5dp"-->
-                        <!--android:background="@color/colorPrimary" />-->
-
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingLeft="15dp"
+                        android:textColor="@color/colorWhite"
+                        android:background="@color/colorOrange"
+                        android:paddingLeft="10dp"
                         android:paddingTop="5dp"
+                        android:paddingBottom="5dp"
                         android:text="Kontak : "
                         android:textSize="18dp"
                         android:textStyle="bold" />

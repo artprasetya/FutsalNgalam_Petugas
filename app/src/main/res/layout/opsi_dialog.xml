@@ -15,14 +15,22 @@
             android:id="@+id/ubah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="ubah" />
+            android:background="@color/colorOrange"
+            android:text="ubah"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
 
         <Button
             android:id="@+id/hapus"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_margin="5dp"
             android:layout_weight="1"
-            android:text="hapus" />
+            android:background="@color/colorRed"
+            android:text="hapus"
+            android:textColor="@color/colorWhite"
+            android:textStyle="bold" />
     </LinearLayout>
 </LinearLayout>

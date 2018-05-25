@@ -30,7 +30,7 @@
                 android:layout_weight="1"
                 android:text="Invoice"
                 android:textColor="@color/colorBlack"
-                android:textSize="20sp"
+                android:textSize="18sp"
                 android:textStyle="bold" />
 
         </LinearLayout>
@@ -47,18 +47,16 @@
             android:weightSum="2">
 
             <TextView
-                android:background="#f7f7f7"
                 android:id="@+id/tvStatus"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:background="#f7f7f7"
                 android:text="Status Pesanan"
                 android:textAlignment="viewEnd"
                 android:textColor="@color/colorPrimaryDark"
                 android:textSize="18sp"
                 android:textStyle="italic" />
         </LinearLayout>
-
     </LinearLayout>
-
 </RelativeLayout>
