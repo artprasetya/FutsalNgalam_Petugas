@@ -21,9 +21,9 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/toolbar"
-        android:layout_marginTop="5dp"
         android:layout_marginLeft="15dp"
         android:layout_marginRight="15dp"
+        android:layout_marginTop="5dp"
         android:background="@color/colorGrey"
         android:orientation="vertical">
 
@@ -61,7 +61,7 @@
             android:layout_margin="5dp"
             android:backgroundTint="@color/colorWhite"
             android:hint="Harga Sewa"
-            android:inputType="numberDecimal"
+            android:inputType="number"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite" />
 

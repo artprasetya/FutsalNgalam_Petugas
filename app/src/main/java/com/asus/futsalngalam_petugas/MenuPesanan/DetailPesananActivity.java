@@ -47,21 +47,21 @@ public class DetailPesananActivity extends AppCompatActivity {
         setToolbar();
 
         invoice = findViewById(R.id.tvInvoice);
-        statusPesanan = (TextView) findViewById(R.id.tvStatus);
-        namaPemesan = (TextView) findViewById(R.id.tvNamaPemesan);
-        nomorTelepon = (TextView) findViewById(R.id.tvNomorPemesan);
-        namaTempatFutsal = (TextView) findViewById(R.id.tvNamaTempatFutsal);
-        namaLapangan = (TextView) findViewById(R.id.tvNamaLapangan);
-        tanggalPesan = (TextView) findViewById(R.id.tvTanggalPesan);
-        durasiSewa = (TextView) findViewById(R.id.tvDurasi);
-        totalPembayaran = (TextView) findViewById(R.id.tvTotal);
-        tvNamaBank = (TextView) findViewById(R.id.tvNamaBank);
-        tvNomorRekening = (TextView) findViewById(R.id.tvNomorRekening);
-        tvNamaRekening = (TextView) findViewById(R.id.tvNamaRekening);
-        tvPembayaran = (TextView) findViewById(R.id.tvJenisPembayaran);
-        tvNominal = (TextView) findViewById(R.id.tvNominal);
-        btnLihatBukti = (Button) findViewById(R.id.btnLihatBukti);
-        btnKonfirmasi = (Button) findViewById(R.id.btnKonfirmasi);
+        statusPesanan = findViewById(R.id.tvStatus);
+        namaPemesan = findViewById(R.id.tvNamaPemesan);
+        nomorTelepon = findViewById(R.id.tvNomorPemesan);
+        namaTempatFutsal = findViewById(R.id.tvNamaTempatFutsal);
+        namaLapangan = findViewById(R.id.tvNamaLapangan);
+        tanggalPesan = findViewById(R.id.tvTanggalPesan);
+        durasiSewa = findViewById(R.id.tvDurasi);
+        totalPembayaran = findViewById(R.id.tvTotal);
+        tvNamaBank = findViewById(R.id.tvNamaBank);
+        tvNomorRekening = findViewById(R.id.tvNomorRekening);
+        tvNamaRekening = findViewById(R.id.tvNamaRekening);
+        tvPembayaran = findViewById(R.id.tvJenisPembayaran);
+        tvNominal = findViewById(R.id.tvNominal);
+        btnLihatBukti = findViewById(R.id.btnLihatBukti);
+        btnKonfirmasi = findViewById(R.id.btnKonfirmasi);
 
         getDataPesanan();
         getDataPembayaran();
@@ -82,7 +82,6 @@ public class DetailPesananActivity extends AppCompatActivity {
 
     }
 
-
     private void konfirmasiPesanan() {
         dbRef = FirebaseDatabase.getInstance().getReference();
         String idPesanan = getIntent().getStringExtra("idPesanan");
@@ -91,7 +90,10 @@ public class DetailPesananActivity extends AppCompatActivity {
     }
 
     private void lihatBuktiPembayaran() {
-        startActivity(new Intent(DetailPesananActivity.this, BuktiPembayaranActivity.class));
+        String idPesanan = getIntent().getStringExtra("idPesanan");
+        Intent intent = new Intent(this, BuktiPembayaranActivity.class);
+        intent.putExtra("idPesanan", idPesanan);
+        startActivity(intent);
     }
 
     private void getDataPembayaran() {
@@ -103,7 +105,7 @@ public class DetailPesananActivity extends AppCompatActivity {
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Pembayaran dataPembayaran = dataSnapshot.getValue(Pembayaran.class);
                 if (dataPembayaran != null) {
-                    tvNamaBank.setText(dataPembayaran.getBankTempatFutsal());
+                    tvNamaBank.setText(dataPembayaran.getNamaBank());
                     tvNamaRekening.setText(dataPembayaran.getNamaRekPemesan());
                     tvNomorRekening.setText(dataPembayaran.getNomorRekPemesan());
                     tvPembayaran.setText(dataPembayaran.getJenisPembayaran());
@@ -135,7 +137,7 @@ public class DetailPesananActivity extends AppCompatActivity {
                     namaLapangan.setText(dataPesanan.getNamaLapangan());
                     tanggalPesan.setText(dataPesanan.getTanggalPesan());
                     durasiSewa.setText("Jam " + (dataPesanan.getJamMulai() + " - " + (dataPesanan.getJamSelesai() + " WIB")));
-                    totalPembayaran.setText(String.valueOf(dataPesanan.getTotalPembayaran()));
+                    totalPembayaran.setText("Rp." + String.valueOf(dataPesanan.getTotalPembayaran()) + ",-");
                 }
             }
 

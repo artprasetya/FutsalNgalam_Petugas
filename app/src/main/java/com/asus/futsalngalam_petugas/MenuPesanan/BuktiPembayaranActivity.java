@@ -40,7 +40,7 @@ public class BuktiPembayaranActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 Pembayaran dataPembayaran = dataSnapshot.getValue(Pembayaran.class);
-                if (dataPembayaran !=null) {
+                if (dataPembayaran != null) {
                     Glide.with(getApplication()).load(dataPembayaran.getBuktiPembayaran()).into(gambarBukti);
                 }
             }

@@ -69,6 +69,7 @@
             android:layout_marginRight="10dp"
             android:backgroundTint="@color/colorWhite"
             android:hint="Harga Sewa"
+            android:inputType="number"
             android:paddingLeft="10dp"
             android:textColor="@color/colorWhite"
             android:textColorHint="@color/colorWhite" />

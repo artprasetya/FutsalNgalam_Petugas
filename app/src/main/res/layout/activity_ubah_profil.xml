@@ -77,31 +77,30 @@
                     android:id="@+id/layout2"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:layout_marginBottom="5dp"
                     android:layout_marginLeft="10dp"
                     android:layout_marginRight="10dp"
                     android:layout_marginTop="10dp"
-                    android:layout_marginBottom="5dp"
                     android:background="@color/colorWhite"
                     android:orientation="vertical">
 
                     <TextView
-                        android:textColor="@color/colorWhite"
-                        android:background="@color/colorOrange"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
+                        android:background="@color/colorOrange"
+                        android:paddingBottom="5dp"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:text="Deskripsi : "
+                        android:textColor="@color/colorWhite"
                         android:textSize="18sp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/etDeskripsi"
                         android:layout_width="match_parent"
-                        android:layout_height="100dp"
+                        android:layout_height="wrap_content"
                         android:hint="Deskripsi tempat futsal"
-                        android:overScrollMode="ifContentScrolls"
                         android:paddingLeft="10dp"
                         android:paddingRight="15dp" />
 
@@ -113,23 +112,21 @@
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/colorWhite"
                         android:background="@color/colorOrange"
+                        android:paddingBottom="5dp"
                         android:paddingLeft="10dp"
                         android:paddingTop="5dp"
-                        android:paddingBottom="5dp"
                         android:text="Kontak : "
+                        android:textColor="@color/colorWhite"
                         android:textSize="18dp"
                         android:textStyle="bold" />
 
                     <EditText
                         android:id="@+id/etKontak"
                         android:layout_width="match_parent"
-                        android:layout_height="80dp"
-                        android:background="@null"
-                        android:drawableLeft="@drawable/ic_arrow"
+                        android:layout_height="wrap_content"
                         android:hint="Kontak tempat futsal"
-                        android:overScrollMode="ifContentScrolls"
+                        android:inputType="phone"
                         android:paddingLeft="15dp"
                         android:paddingRight="15dp" />
 
@@ -146,6 +143,7 @@
                         android:text="Fasilitas"
                         android:textColor="@android:color/white"
                         android:textStyle="bold" />
+
                     <View
                         android:layout_width="fill_parent"
                         android:layout_height="5dp"

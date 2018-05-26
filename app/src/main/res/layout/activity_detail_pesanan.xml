@@ -283,18 +283,7 @@
                 android:layout_marginBottom="5dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:weightSum="2">
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:background="@color/colorSilver"
-                    android:text=""
-                    android:textAlignment="viewStart"
-                    android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
-                    android:textStyle="bold" />
+                android:weightSum="1">
 
                 <TextView
                     android:id="@+id/tvTotal"
@@ -303,9 +292,9 @@
                     android:layout_weight="1"
                     android:background="@color/colorSilver"
                     android:text="Nominal"
-                    android:textAlignment="viewEnd"
+                    android:textAlignment="center"
                     android:textColor="@color/colorBlack"
-                    android:textSize="20sp"
+                    android:textSize="22sp"
                     android:textStyle="bold" />
             </LinearLayout>
 
