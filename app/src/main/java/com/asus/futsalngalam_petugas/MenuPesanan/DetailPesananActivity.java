@@ -1,5 +1,7 @@
 package com.asus.futsalngalam_petugas.MenuPesanan;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -76,10 +78,57 @@ public class DetailPesananActivity extends AppCompatActivity {
         btnKonfirmasi.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                konfirmasiPesanan();
+                showDialog();
             }
         });
 
+    }
+
+    private void showDialog() {
+        String status = statusPesanan.getText().toString();
+        if (status.equals("Menunggu Konfirmasi")) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Konfirmasi Pesanan")
+                    .setCancelable(true)
+                    .setMessage("Silahkan pilih 'YA' untuk mengkonfirmasi pesanan.")
+                    .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            konfirmasiPesanan();
+                        }
+                    })
+                    .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+            alert.show();
+        } else if (status.equals("Belum Bayar")) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Pemberitahuan")
+                    .setCancelable(true)
+                    .setMessage("Pemesan Belum Melakukan Pembayaran, anda tidak bisa melakukan konfirmasi pesanan.")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+            alert.show();
+        } else if (status.equals("Sudah dikonfirmasi")) {
+            AlertDialog.Builder alert = new AlertDialog.Builder(this);
+            alert.setTitle("Pemberitahuan")
+                    .setCancelable(true)
+                    .setMessage("Pesanan sudah di Konfirmasi")
+                    .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialogInterface, int i) {
+                            dialogInterface.dismiss();
+                        }
+                    });
+            alert.show();
+        }
     }
 
     private void konfirmasiPesanan() {
@@ -137,7 +186,7 @@ public class DetailPesananActivity extends AppCompatActivity {
                     namaLapangan.setText(dataPesanan.getNamaLapangan());
                     tanggalPesan.setText(dataPesanan.getTanggalPesan());
                     durasiSewa.setText("Jam " + (dataPesanan.getJamMulai() + " - " + (dataPesanan.getJamSelesai() + " WIB")));
-                    totalPembayaran.setText("Rp." + String.valueOf(dataPesanan.getTotalPembayaran()) + ",-");
+                    totalPembayaran.setText("Rp." + String.valueOf(dataPesanan.getTotalPembayaran()));
                 }
             }
 

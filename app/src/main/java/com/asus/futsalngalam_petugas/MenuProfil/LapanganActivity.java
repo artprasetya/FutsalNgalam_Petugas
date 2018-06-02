@@ -1,13 +1,17 @@
 package com.asus.futsalngalam_petugas.MenuProfil;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -50,6 +54,7 @@ public class LapanganActivity extends AppCompatActivity {
     List<Lapangan> lapanganList = new ArrayList<>();
 
     Context context;
+    private FloatingActionButton fab;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,12 +74,9 @@ public class LapanganActivity extends AppCompatActivity {
         // Setting RecyclerView layout as LinearLayout.
         recyclerView.setLayoutManager(new LinearLayoutManager(LapanganActivity.this));
 
-        mProgress = new ProgressDialog(this);
+        fab = findViewById(R.id.fab);
 
-        etLapangan = (EditText) findViewById(R.id.etLapangan);
-        etHarga = (EditText) findViewById(R.id.etHarga);
-        spinnerKategori = (Spinner) findViewById(R.id.spinner);
-        btnTambah = (Button) findViewById(R.id.tambah);
+        mProgress = new ProgressDialog(this);
 
         auth = FirebaseAuth.getInstance();
         FirebaseUser user = auth.getCurrentUser();
@@ -82,12 +84,41 @@ public class LapanganActivity extends AppCompatActivity {
 
         getDataLapangan();
 
-        btnTambah.setOnClickListener(new View.OnClickListener() {
+        fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                tambahLapangan();
+                showDialog();
             }
         });
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder dialog = new AlertDialog.Builder(LapanganActivity.this);
+        LayoutInflater inflater = getLayoutInflater();
+        View dialogView = inflater.inflate(R.layout.tambah_lapangan_dialog, null);
+        dialog.setView(dialogView);
+        dialog.setCancelable(true);
+        dialog.setTitle("Tambah Lapangan");
+
+        etLapangan = (EditText) dialogView.findViewById(R.id.etLapangan);
+        etHarga = (EditText) dialogView.findViewById(R.id.etHarga);
+        spinnerKategori = (Spinner) dialogView.findViewById(R.id.spinner);
+
+        dialog.setPositiveButton("Tambah", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                tambahLapangan();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.dismiss();
+            }
+        });
+        dialog.show();
     }
 
     private void getDataLapangan() {
@@ -139,12 +170,8 @@ public class LapanganActivity extends AppCompatActivity {
             dbRef.child("lapangan").child(idPetugas).child(idLapangan).child("namaLapangan").setValue(namaLapangan);
             dbRef.child("lapangan").child(idPetugas).child(idLapangan).child("hargaSewa").setValue(hargaSewa);
             dbRef.child("lapangan").child(idPetugas).child(idLapangan).child("kategori").setValue(kategori);
-            dbRef.child("tempatFutsal").child(idPetugas).child("lapangan").child(idLapangan).child("idLapangan").setValue(idLapangan);
-            dbRef.child("tempatFutsal").child(idPetugas).child("lapangan").child(idLapangan).child("namaLapangan").setValue(namaLapangan);
             mProgress.dismiss();
             Toast.makeText(this, "Lapangan berhasil ditambahkan.", Toast.LENGTH_LONG).show();
-            etLapangan.setText("");
-            etHarga.setText("");
         } else {
             Toast.makeText(this, "Lengkapi data lapangan.", Toast.LENGTH_LONG).show();
         }

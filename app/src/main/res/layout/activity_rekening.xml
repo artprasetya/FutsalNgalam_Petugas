@@ -19,95 +19,22 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rekening_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/garis"
+        android:layout_height="match_parent"
         android:layout_below="@+id/toolbar"
         android:layout_margin="10dp" />
 
-    <View
-        android:id="@+id/garis"
-        android:layout_width="fill_parent"
-        android:layout_height="3dp"
-        android:layout_above="@+id/form"
-        android:background="@color/colorPrimary" />
-
-    <LinearLayout
-        android:id="@+id/form"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/button"
-        android:background="@color/colorGrey"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/textview"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/spinner"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:layout_marginTop="5dp"
-            android:text="Tambahkan Rekening : "
-            android:textColor="@color/colorWhite" />
-
-        <Spinner
-            android:id="@+id/spinner"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@color/colorWhite"
-            android:entries="@array/Rekening"
-            android:paddingLeft="5dp" />
-
-        <EditText
-            android:id="@+id/etNamaRekening"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="5dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="Nama Pemilik Rekening"
-            android:inputType="textPersonName"
-            android:paddingLeft="10dp"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite" />
-
-        <EditText
-            android:id="@+id/etNomoRekening"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="Nomor Rekening"
-            android:inputType="number"
-            android:paddingLeft="10dp"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite" />
-    </LinearLayout>
-
-    <LinearLayout
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal"
-        android:weightSum="1">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/fab"
+        app:backgroundTint="@color/colorOrange"
+        app:fabSize="mini" />
 
-        <Button
-            android:id="@+id/tambah"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorOrange"
-            android:text="Tambah"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-
-    </LinearLayout>
 </RelativeLayout>

@@ -1,12 +1,13 @@
 package com.asus.futsalngalam_petugas.MenuUtama;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.GridView;
-import android.widget.Toast;
 
 import com.asus.futsalngalam_petugas.Autentikasi.LoginActivity;
 import com.asus.futsalngalam_petugas.MenuPesanan.DaftarPesananActivity;
@@ -70,12 +71,31 @@ public class MainActivity extends AppCompatActivity {
                         view.getContext().startActivity(c);
                         break;
                     case 3:
-                        signOut();
+                        showDialog();
                         break;
                 }
-                Toast.makeText(MainActivity.this, "  " + gridViewString[+i], Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showDialog() {
+        AlertDialog.Builder alert = new AlertDialog.Builder(this);
+        alert.setTitle("Konfirmasi Keluar")
+                .setCancelable(true)
+                .setMessage("Anda Yakin Ingin Keluar?")
+                .setPositiveButton("Ya", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        signOut();
+                    }
+                })
+                .setNegativeButton("Tidak", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int i) {
+                        dialogInterface.dismiss();
+                    }
+                });
+        alert.show();
     }
 
     public void signOut() {

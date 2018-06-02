@@ -19,42 +19,55 @@
     <android.support.v7.widget.RecyclerView
         android:id="@+id/fasilitas_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_above="@+id/button"
         android:layout_below="@+id/toolbar"
-        android:layout_margin="10dp">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_margin="10dp" />
 
-    <LinearLayout
-        android:id="@+id/button"
-        android:layout_width="match_parent"
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:background="@color/colorGrey"
-        android:orientation="horizontal"
-        android:weightSum="3">
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+        android:src="@drawable/fab"
+        app:backgroundTint="@color/colorOrange"
+        app:fabSize="mini" />
 
-        <EditText
-            android:id="@+id/etFasilitas"
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:layout_weight="2"
-            android:backgroundTint="@color/colorWhite"
-            android:hint="Fasilitas"
-            android:textColor="@color/colorWhite"
-            android:textColorHint="@color/colorWhite" />
+    <!--<LinearLayout-->
+    <!--android:id="@+id/button"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_alignParentBottom="true"-->
+    <!--android:background="@color/colorGrey"-->
+    <!--android:orientation="horizontal"-->
+    <!--android:weightSum="3">-->
 
-        <Button
-            android:id="@+id/tambah"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/colorOrange"
-            android:text="Tambah"
-            android:textColor="@android:color/white"
-            android:textStyle="bold" />
-    </LinearLayout>
+    <!--<EditText-->
+    <!--android:id="@+id/etFasilitas"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:layout_marginLeft="5dp"-->
+    <!--android:layout_marginRight="5dp"-->
+    <!--android:layout_weight="2"-->
+    <!--android:backgroundTint="@color/colorWhite"-->
+    <!--android:hint="Fasilitas"-->
+    <!--android:textColor="@color/colorWhite"-->
+    <!--android:textColorHint="@color/colorWhite" />-->
+
+    <!--<Button-->
+    <!--android:id="@+id/tambah"-->
+    <!--android:layout_width="0dp"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:layout_weight="1"-->
+    <!--android:background="@color/colorOrange"-->
+    <!--android:text="Tambah"-->
+    <!--android:textColor="@android:color/white"-->
+    <!--android:textStyle="bold" />-->
+    <!--</LinearLayout>-->
 
 </RelativeLayout>

@@ -8,12 +8,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.asus.futsalngalam_petugas.MenuProfil.FasilitasActivity;
-import com.asus.futsalngalam_petugas.Model.Fasilitas;
 import com.asus.futsalngalam_petugas.MenuProfil.UbahFasilitasActivity;
+import com.asus.futsalngalam_petugas.Model.Fasilitas;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -26,6 +27,7 @@ public class FasilitasAdapter extends RecyclerView.Adapter<FasilitasAdapter.View
     LayoutInflater mInflater;
     private List<Fasilitas> fasilitasList;
     private DatabaseReference dbRef;
+    private EditText etFasilitas;
 
     public FasilitasAdapter(Context context, List<Fasilitas> fasilitasList) {
         this.context = context;
@@ -83,6 +85,39 @@ public class FasilitasAdapter extends RecyclerView.Adapter<FasilitasAdapter.View
                         Intent intent = new Intent(context, UbahFasilitasActivity.class);
                         intent.putExtra("idFasilitas", fasilitasList.get(position).getIdFasilitas());
                         context.startActivity(intent);
+//                        final AlertDialog.Builder dialogUbah = new AlertDialog.Builder(context);
+//                        LayoutInflater inflater = mInflater;
+//                        View dialogView = inflater.inflate(R.layout.ubah_fasilitas_dialog, null);
+//                        dialogUbah.setView(dialogView);
+//                        dialogUbah.setCancelable(true);
+//                        dialogUbah.setTitle("Ubah Fasilitas");
+//
+//                        etFasilitas = (EditText) dialogView.findViewById(R.id.etUbahFasilitas);
+////                        etFasilitas.setText(namaFasilitas);
+//                        final String fasilitas = etFasilitas.getText().toString().trim();
+//
+//                        dialogUbah.setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dbRef = FirebaseDatabase.getInstance().getReference();
+//
+//                                if (!TextUtils.isEmpty(fasilitas)) {
+//                                    dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).child("fasilitas").setValue(fasilitas);
+//                                    Toast.makeText(context, "Data Berhasil Diperbarui.", Toast.LENGTH_SHORT).show();
+//                                    dialog.dismiss();
+//                                } else {
+//                                    Toast.makeText(context, "Lengkapi Data.", Toast.LENGTH_SHORT).show();
+//                                }
+//                            }
+//                        });
+//
+//                        dialogUbah.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
+//                            @Override
+//                            public void onClick(DialogInterface dialog, int which) {
+//                                dialog.dismiss();
+//                            }
+//                        });
+//                        dialogUbah.show();
                     }
                 });
 
@@ -91,7 +126,6 @@ public class FasilitasAdapter extends RecyclerView.Adapter<FasilitasAdapter.View
                     public void onClick(View v) {
                         dialog.dismiss();
                         dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).removeValue();
-                        dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(idFasilitas).removeValue();
                         Toast.makeText(context, "Data Berhasil Dihapus.", Toast.LENGTH_SHORT).show();
                         Intent intent = new Intent(context, FasilitasActivity.class);
                         context.startActivity(intent);

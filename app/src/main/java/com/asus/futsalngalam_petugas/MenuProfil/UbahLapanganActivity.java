@@ -67,7 +67,6 @@ public class UbahLapanganActivity extends AppCompatActivity {
         if (!TextUtils.isEmpty(namaLapangan) && (ubahHargaSewa.getText().toString() != null)) {
             dbRef.child("lapangan").child(idPetugas).child(idLapangan).child("namaLapangan").setValue(namaLapangan);
             dbRef.child("lapangan").child(idPetugas).child(idLapangan).child("hargaSewa").setValue(hargaSewa);
-            dbRef.child("tempatFutsal").child(idPetugas).child("lapangan").child(idLapangan).child("namaLapangan").setValue(namaLapangan);
             Toast.makeText(this, "Data Berhasil Diperbarui.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(UbahLapanganActivity.this, LapanganActivity.class));
         } else {

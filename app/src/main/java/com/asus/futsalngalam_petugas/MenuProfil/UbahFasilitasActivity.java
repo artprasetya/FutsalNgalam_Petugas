@@ -60,7 +60,6 @@ public class UbahFasilitasActivity extends AppCompatActivity {
         dbRef = FirebaseDatabase.getInstance().getReference();
         if (!TextUtils.isEmpty(namaFasilitas)) {
             dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).child("fasilitas").setValue(namaFasilitas);
-            dbRef.child("tempatFutsal").child(idPetugas).child("fasilitas").child(idFasilitas).child("fasilitas").setValue(namaFasilitas);
             Toast.makeText(this, "Data Berhasil Diperbarui.", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(UbahFasilitasActivity.this, FasilitasActivity.class));
         } else {
