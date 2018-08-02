@@ -16,6 +16,7 @@ import com.asus.futsalngalam_petugas.MenuUlasan.UlasanActivity;
 import com.asus.futsalngalam_petugas.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.onesignal.OneSignal;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -47,6 +48,14 @@ public class MainActivity extends AppCompatActivity {
         idUser = user.getUid();
         emailUser = user.getEmail();
         auth = FirebaseAuth.getInstance();
+
+        // OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
+        OneSignal.sendTag("User_ID", emailUser);
 
         CustomGridViewActivity adapterViewAndroid = new CustomGridViewActivity(MainActivity.this, gridViewString, gridViewImageId);
         androidGridView = (GridView) findViewById(R.id.grid_view);

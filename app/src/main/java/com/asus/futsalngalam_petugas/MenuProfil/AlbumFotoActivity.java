@@ -190,7 +190,7 @@ public class AlbumFotoActivity extends AppCompatActivity {
             progressDialog.show();
 
             // Creating second StorageReference.
-            StorageReference storageReference2nd = storageReference.child("albums/" + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
+            final StorageReference storageReference2nd = storageReference.child("albums/" + System.currentTimeMillis() + "." + GetFileExtension(FilePathUri));
 
             // Adding addOnSuccessListener to second StorageReference.
             storageReference2nd.putFile(FilePathUri)
@@ -208,7 +208,7 @@ public class AlbumFotoActivity extends AppCompatActivity {
                             Toast.makeText(getApplicationContext(), "Image Uploaded Successfully ", Toast.LENGTH_LONG).show();
 
                             @SuppressWarnings("VisibleForTests")
-                            AlbumFoto albumFoto = new AlbumFoto(TempImageName, taskSnapshot.getDownloadUrl().toString());
+                            AlbumFoto albumFoto = new AlbumFoto(TempImageName, storageReference2nd.getDownloadUrl().toString());
 
                             // Getting image upload ID.
                             String ImageUploadId = databaseReference.push().getKey();

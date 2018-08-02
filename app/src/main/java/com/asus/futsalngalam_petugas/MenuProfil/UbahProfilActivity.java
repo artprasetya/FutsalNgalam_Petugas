@@ -101,7 +101,7 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
         gotoFasilitas.setOnClickListener(this);
         gotoLapangan.setOnClickListener(this);
         gotoRekening.setOnClickListener(this);
-}
+    }
 
     @Override
     public void onClick(View view) {
@@ -149,7 +149,7 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
             progressDialog.show();
 
             //getting the storage reference
-            StorageReference sRef = storageRef.child("uploads/" + System.currentTimeMillis() + "." + getFileExtension(filePath));
+            final StorageReference sRef = storageRef.child("uploads/" + System.currentTimeMillis() + "." + getFileExtension(filePath));
 
             //adding the file to reference
             sRef.putFile(filePath)
@@ -163,7 +163,7 @@ public class UbahProfilActivity extends AppCompatActivity implements View.OnClic
                             Toast.makeText(getApplicationContext(), "File Uploaded ", Toast.LENGTH_LONG).show();
 
                             //simpan ke database
-                            dbRef.child("tempatFutsal").child(idPetugas).child("fotoProfil").setValue(taskSnapshot.getDownloadUrl().toString());
+                            dbRef.child("tempatFutsal").child(idPetugas).child("fotoProfil").setValue(sRef.getDownloadUrl().toString());
                         }
                     })
                     .addOnFailureListener(new OnFailureListener() {

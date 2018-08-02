@@ -12,18 +12,19 @@ public class Pesanan {
             namaTempatFutsal,
             namaLapangan,
             tanggalPesan,
-            catatan,
             jamMulai,
             jamSelesai,
             invoice,
-            timestamp;
+            timestamp,
+            emailTempatFutsal,
+            emailPemesan;
 
     double totalPembayaran;
 
     public Pesanan() {
     }
 
-    public Pesanan(String idPetugas, String idPesanan, String idPemesan, String idLapangan, String statusPesanan, String namaPemesan, String noTelepon, String namaTempatFutsal, String namaLapangan, String tanggalPesan, String catatan, String jamMulai, String jamSelesai, String invoice, String timestamp, double totalPembayaran) {
+    public Pesanan(String idPetugas, String idPesanan, String idPemesan, String idLapangan, String statusPesanan, String namaPemesan, String noTelepon, String namaTempatFutsal, String namaLapangan, String tanggalPesan, String jamMulai, String jamSelesai, String invoice, String timestamp, String emailTempatFutsal, String emailPemesan, double totalPembayaran) {
         this.idPetugas = idPetugas;
         this.idPesanan = idPesanan;
         this.idPemesan = idPemesan;
@@ -34,35 +35,12 @@ public class Pesanan {
         this.namaTempatFutsal = namaTempatFutsal;
         this.namaLapangan = namaLapangan;
         this.tanggalPesan = tanggalPesan;
-        this.catatan = catatan;
         this.jamMulai = jamMulai;
         this.jamSelesai = jamSelesai;
         this.invoice = invoice;
         this.timestamp = timestamp;
-        this.totalPembayaran = totalPembayaran;
-    }
-
-    public String getInvoice() {
-        return invoice;
-    }
-
-    public void setInvoice(String invoice) {
-        this.invoice = invoice;
-    }
-
-    public String getTimestamp() {
-        return timestamp;
-    }
-
-    public void setTimestamp(String timestamp) {
-        this.timestamp = timestamp;
-    }
-
-    public double getTotalPembayaran() {
-        return totalPembayaran;
-    }
-
-    public void setTotalPembayaran(double totalPembayaran) {
+        this.emailTempatFutsal = emailTempatFutsal;
+        this.emailPemesan = emailPemesan;
         this.totalPembayaran = totalPembayaran;
     }
 
@@ -146,14 +124,6 @@ public class Pesanan {
         this.tanggalPesan = tanggalPesan;
     }
 
-    public String getCatatan() {
-        return catatan;
-    }
-
-    public void setCatatan(String catatan) {
-        this.catatan = catatan;
-    }
-
     public String getJamMulai() {
         return jamMulai;
     }
@@ -168,5 +138,45 @@ public class Pesanan {
 
     public void setJamSelesai(String jamSelesai) {
         this.jamSelesai = jamSelesai;
+    }
+
+    public String getInvoice() {
+        return invoice;
+    }
+
+    public void setInvoice(String invoice) {
+        this.invoice = invoice;
+    }
+
+    public String getTimestamp() {
+        return timestamp;
+    }
+
+    public void setTimestamp(String timestamp) {
+        this.timestamp = timestamp;
+    }
+
+    public String getEmailTempatFutsal() {
+        return emailTempatFutsal;
+    }
+
+    public void setEmailTempatFutsal(String emailTempatFutsal) {
+        this.emailTempatFutsal = emailTempatFutsal;
+    }
+
+    public String getEmailPemesan() {
+        return emailPemesan;
+    }
+
+    public void setEmailPemesan(String emailPemesan) {
+        this.emailPemesan = emailPemesan;
+    }
+
+    public double getTotalPembayaran() {
+        return totalPembayaran;
+    }
+
+    public void setTotalPembayaran(double totalPembayaran) {
+        this.totalPembayaran = totalPembayaran;
     }
 }

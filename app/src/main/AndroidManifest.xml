@@ -48,6 +48,10 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/google_maps_key" />
 
+        <meta-data
+            android:name="com.onesignal.NotificationOpened.DEFAULT"
+            android:value="DISABLE" />
+
         <activity
             android:name=".MenuProfil.MapsActivity"
             android:label="@string/title_activity_maps" />
@@ -55,7 +59,7 @@
         <activity android:name=".MenuProfil.UbahLapanganActivity" />
         <activity android:name=".MenuProfil.UbahFasilitasActivity" />
         <activity android:name=".MenuPesanan.DetailPesananActivity" />
-        <activity android:name=".MenuPesanan.BuktiPembayaranActivity"></activity>
+        <activity android:name=".MenuPesanan.BuktiPembayaranActivity"/>
     </application>
 
 </manifest>

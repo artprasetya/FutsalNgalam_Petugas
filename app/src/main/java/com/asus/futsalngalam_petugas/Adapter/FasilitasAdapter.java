@@ -85,39 +85,6 @@ public class FasilitasAdapter extends RecyclerView.Adapter<FasilitasAdapter.View
                         Intent intent = new Intent(context, UbahFasilitasActivity.class);
                         intent.putExtra("idFasilitas", fasilitasList.get(position).getIdFasilitas());
                         context.startActivity(intent);
-//                        final AlertDialog.Builder dialogUbah = new AlertDialog.Builder(context);
-//                        LayoutInflater inflater = mInflater;
-//                        View dialogView = inflater.inflate(R.layout.ubah_fasilitas_dialog, null);
-//                        dialogUbah.setView(dialogView);
-//                        dialogUbah.setCancelable(true);
-//                        dialogUbah.setTitle("Ubah Fasilitas");
-//
-//                        etFasilitas = (EditText) dialogView.findViewById(R.id.etUbahFasilitas);
-////                        etFasilitas.setText(namaFasilitas);
-//                        final String fasilitas = etFasilitas.getText().toString().trim();
-//
-//                        dialogUbah.setPositiveButton("Simpan", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dbRef = FirebaseDatabase.getInstance().getReference();
-//
-//                                if (!TextUtils.isEmpty(fasilitas)) {
-//                                    dbRef.child("fasilitas").child(idPetugas).child(idFasilitas).child("fasilitas").setValue(fasilitas);
-//                                    Toast.makeText(context, "Data Berhasil Diperbarui.", Toast.LENGTH_SHORT).show();
-//                                    dialog.dismiss();
-//                                } else {
-//                                    Toast.makeText(context, "Lengkapi Data.", Toast.LENGTH_SHORT).show();
-//                                }
-//                            }
-//                        });
-//
-//                        dialogUbah.setNegativeButton("Batal", new DialogInterface.OnClickListener() {
-//                            @Override
-//                            public void onClick(DialogInterface dialog, int which) {
-//                                dialog.dismiss();
-//                            }
-//                        });
-//                        dialogUbah.show();
                     }
                 });
 

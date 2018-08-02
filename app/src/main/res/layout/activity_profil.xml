@@ -143,6 +143,7 @@
                             android:src="@drawable/whatsapp" />
 
                         <TextView
+                            android:text="Nomor Telepon"
                             android:id="@+id/tvKontak"
                             android:layout_width="match_parent"
                             android:layout_height="65dp"
